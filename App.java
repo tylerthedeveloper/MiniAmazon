@@ -1,25 +1,48 @@
-import InventoryRepo.*;
-import UserBase.*;
+//import src.UserBase.*;
+//import src.InventoryRepo.*;
+import java.awt.*;
+import javax.swing.*;
 
 public class App
 {
 	//member instance variables
-	InventoryRepo invRepo;
-	UserBase usrBase;
+	InventoryRepoClass invRepo;
+	UserBaseClass usrBase;
 	User User;
+	JFrame Window;
 	
 	public App()
 	{
 		//initialize App classes
-		invRepo = new InventoryRepo();
-		usrBase = new UserBase();
+		invRepo = new InventoryRepoClass();
+		usrBase = new UserBaseClass();
 
+		Window = new Window();
+		
 		//initiate login sequence
-		//this.invokeLogin(this.onStart());		
-		User = UserBase.onStart();
-		
+		User = usrBase.onStart();
+
 		//set home page
-		//...
-		
+		//setMainPage();
 	}
+	
+	/*
+	public void setMainPage()
+	{
+		if(User instanceof Buyer) {
+			
+		}	
+		
+		else if(User instanceof Seller) {
+			
+		}	
+
+		else {
+			
+		}	
+		
+	}	
+	*/
+
+	
 }
