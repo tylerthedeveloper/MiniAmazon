@@ -2,39 +2,14 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Window extends JFrame
+public class UIElementHelper extends JDialog
 {
 
-	//class member instance variables
-	public final int FRAME_WIDTH = 600;
-	public final int FRAME_HEIGHT = 600;	
-
-	JPanel userPage;
-
 	//constructor
-	public Window() 
+	public UIElementHelper() {}
+	
+	public JDialog Initial()
 	{
-		//call to super to initialize the JFrame
-	    super();
-	    
-	    //helper to aggregate and organize UI elements and dialogs
-	    UIElementHelper UIHelper = new UIElementHelper();
-	    
-	    //setting frame specifics
-	    this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-		this.setTitle("Marketplace");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-		JDialog d2 = UIHelper.Initial();
-		d2.setVisible(true);
-	}
-		
-
-}
-
-
-
-/*
         JDialog dialog = new JDialog(this);
         dialog.setTitle("Hello and Welcome");
         JPanel pan = new JPanel();
@@ -45,13 +20,13 @@ public class Window extends JFrame
 		pan.add(login);
 		pan.add(register);
         dialog.setSize(new Dimension(400, 100));
-        dialog.setLocationRelativeTo(this);
         dialog.setModal(true);
         login.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e)
 		  	{
 		  		dispose();
+		  		//dialog.setVisible(false);
 		  		loginButtonClicked();
 		  	}
 		});
@@ -60,22 +35,20 @@ public class Window extends JFrame
 		{
 			public void actionPerformed(ActionEvent e)
 		  	{
-		  		//this.dispose();
+		  		dispose();
 			  	registerButtonClicked();
 		  	}
 		});
-		
-		//register
+
 		dialog.add(pan);        
-		//dialog.setVisible(true);
+		dialog.setLocationRelativeTo(this);
 		
-		
-		
-		
-		
-		
-		public void loginButtonClicked()
+		return dialog;
+	}
+	
+	public void loginButtonClicked()
 	{		
+
 	    JDialog loginDialog = new JDialog(this);
         loginDialog.setTitle("Login");
         JPanel logPan = new JPanel();
@@ -93,8 +66,6 @@ public class Window extends JFrame
 			public void actionPerformed(ActionEvent e)
 		  	{
 		  		dispose();
-			  	add(new UserPage());
-			  	setVisible(true);
 		  	}
 		});
 		logPan.add(loginButton);
@@ -103,27 +74,30 @@ public class Window extends JFrame
         loginDialog.setModal(true);
         loginDialog.add(logPan);
 		loginDialog.setVisible(true);
-	}	
+	}
 	
-	
-	
-public void registerButtonClicked()
+	public void registerButtonClicked()
 	{		
 	    JDialog loginDialog = new JDialog(this);
         loginDialog.setTitle("Logiaan");
         JPanel logPan = new JPanel();
 		JTextField name = new JTextField("name");
 		JTextField password = new JTextField("password");
-		JButton login = new JButton("Login");
+		JButton register = new JButton("Register");
+		register.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e)
+		  	{
+		  		dispose();
+		  	}
+		});
 		logPan.add(name);
 		logPan.add(password);
-		logPan.add(login);
+		logPan.add(register);
         loginDialog.setSize(new Dimension(400, 100));
         loginDialog.setLocationRelativeTo(this);
         loginDialog.setModal(true);
         loginDialog.add(logPan);
 		loginDialog.setVisible(true);
-	}		
-	
-	*/
-	
+	}
+}
