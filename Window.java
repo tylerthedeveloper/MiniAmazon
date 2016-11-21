@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class Window extends JFrame
@@ -18,7 +19,35 @@ public class Window extends JFrame
 		this.setTitle("Marketplace");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.add(new UserPage());
-		this.setVisible(true);		
+        
+        JDialog dialog = new JDialog(this);
+        dialog.setTitle("Hello and Welcome");
+        JPanel pan=new JPanel();
+		JButton login = new JButton("Login");
+		JButton register = new JButton("Register");
+		login.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e)
+		  	{
+			  	//Window.setVisible(true);
+				//System.out.println("som");
+				
+		  	}
+		});
+		
+		//register
+		
+		pan.add(login);
+		pan.add(register);
+		
+        dialog.setSize(new Dimension(400, 100));
+        dialog.setLocationRelativeTo(this);
+        dialog.setModal(true);
+		dialog.add(pan);        
+		dialog.setVisible(true);
 	}
+
+
+	//		//this.setVisible(true);
 
 }
