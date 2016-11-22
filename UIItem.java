@@ -19,5 +19,23 @@ public class UIItem extends JPanel
 	    this.add(sellerID);
 	    this.add(quantity);
 	    this.add(order);
-	}	
+	}
+	
+	public UIItem(int _number, String _productName, String _category, 
+				String _sellerID, int _quantity)
+	{
+		super();		
+	    JLabel number = new JLabel(Integer.toString(_number));
+	    JLabel productName = new JLabel(_productName);
+	    JLabel category = new JLabel(_category);
+	    JLabel sellerID = new JLabel(_sellerID);
+	    JLabel quantity = new JLabel(Integer.toString(_quantity));
+	    JButton order = new JButton("Order");
+	    this.add(number);
+	    this.add(productName);
+	    this.add(category);
+	    this.add(sellerID);
+	    this.add(quantity);
+	    this.add(order);
+	}
 }
