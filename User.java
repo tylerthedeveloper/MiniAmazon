@@ -8,7 +8,6 @@ abstract class User
 	String _email;
 	Role _role;
 	
-	
 	public static enum Role 
 	{
 		Buyer,
