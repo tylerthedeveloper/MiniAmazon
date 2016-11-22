@@ -9,27 +9,31 @@ public class Window extends JFrame
 	public final int FRAME_WIDTH = 600;
 	public final int FRAME_HEIGHT = 600;	
 
-	JPanel userPage;
-
+	//helper to aggregate and organize UI elements and dialogs
+	UIElementHelper UIHelper = new UIElementHelper();
+	
+	//check onstart
+	static boolean onStart = true;
+	
 	//constructor
 	public Window() 
 	{
 		//call to super to initialize the JFrame
 	    super();
-	    
-	    //helper to aggregate and organize UI elements and dialogs
-	    UIElementHelper UIHelper = new UIElementHelper();
-	    
+	        
 	    //setting frame specifics
 	    this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		this.setTitle("Marketplace");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(this);
         
-		JDialog d2 = UIHelper.Initial();
-		d2.setVisible(true);
+        //setting initialDialog on startup only
+		if(onStart) {
+			JDialog initialDialog = UIHelper.Initial();
+			initialDialog.setVisible(true);
+			onStart = false;
+		}
 	}
-		
-
 }
 
 

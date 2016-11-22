@@ -3,15 +3,17 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class UserPage extends JPanel
+public class UserPage extends UIPage
 {
 	public UserPage()
 	{
-		super();
-		
+		super();		
 	    //setting frame specifics
-	    JButton login = new JButton("Login");
-	    this.add(login);
-		//this.add(new JButton("Register"));
+	    JButton productList = new JButton("View Products");
+	    JButton searchProducts = new JButton("Search Products");
+	    JButton viewCategories = new JButton("View Categories");
+	    this.add(productList);
+	    this.add(searchProducts);
+	    this.add(viewCategories);
 	}	
 }

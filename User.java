@@ -1,6 +1,6 @@
 //package src.Userbase;
 
-public class User
+abstract class User
 {
 	String ID;
 	String name;

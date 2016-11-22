@@ -48,7 +48,6 @@ public class UIElementHelper extends JDialog
 	
 	public void loginButtonClicked()
 	{		
-
 	    JDialog loginDialog = new JDialog(this);
         loginDialog.setTitle("Login");
         JPanel logPan = new JPanel();
@@ -66,6 +65,9 @@ public class UIElementHelper extends JDialog
 			public void actionPerformed(ActionEvent e)
 		  	{
 		  		dispose();
+		  		Window window = new Window();
+		  		window.add(new UserPage());
+		  		window.setVisible(true);
 		  	}
 		});
 		logPan.add(loginButton);
@@ -89,6 +91,9 @@ public class UIElementHelper extends JDialog
 			public void actionPerformed(ActionEvent e)
 		  	{
 		  		dispose();
+		  		Window window = new Window();
+		  		window.add(new UserPage());
+		  		window.setVisible(true);
 		  	}
 		});
 		logPan.add(name);

@@ -8,8 +8,8 @@ public class App
 	//member instance variables
 	InventoryRepoClass invRepo;
 	UserBaseClass usrBase;
-	User User;
-	JFrame Window;
+	public static User User;
+	public static JFrame Window;
 	
 	public App()
 	{
@@ -18,7 +18,7 @@ public class App
 		usrBase = new UserBaseClass();
 
 		Window = new Window();
-		
+
 		//initiate login sequence
 		User = usrBase.onStart();
 
