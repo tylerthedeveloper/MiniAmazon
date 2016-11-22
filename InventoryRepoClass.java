@@ -2,6 +2,7 @@
 
 public class InventoryRepoClass
 {
+	
 	public InventoryRepoClass() {}
 
 }

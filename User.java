@@ -2,7 +2,7 @@
 
 abstract class User
 {
-	String ID;
+	String _userID;
 	String _name;
 	String _pass;
 	String _email;
@@ -21,13 +21,24 @@ abstract class User
 	
 	public User (String name, String pass, String email, Role role) 
 	{
-		setName(name);
-		setPass(pass);
-		setEmail(email);
-		setRole(role);
+		this.setUserID(createNewGUID());
+		this.setName(name);
+		this.setPass(pass);
+		this.setEmail(email);
+		this.setRole(role);
 	}
 	
-	public void setID(){}
+	public String createNewGUID() {
+		return "new GUID";
+	}
+	
+	public void setUserID(String userID){
+		_userID = userID;
+	}
+	
+	public String getUserID(){
+		return _userID;
+	}
 	
 	public void setName(String name) {
 		_name = name;
@@ -59,4 +70,11 @@ abstract class User
 	
 	public void hashPass(){}
 	
+	public String toString() {
+		return "UserID: " + getUserID() + "\n" +
+				"Name: " + getName() + "\n" +
+				"Email: " + getEmail() + "\n" +
+				"Role: " + getRole() + "\n";
+	}
+
 }

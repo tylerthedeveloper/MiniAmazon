@@ -1,10 +1,15 @@
 //package src.Userbase;
 //import src.Userbase.*;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class UserBaseClass
 {
-	public UserBaseClass() {}
+	public static ArrayList<User> UserList;
+	
+	public UserBaseClass() {
+		UserList = new ArrayList<User>();
+	}
 
 	/*
 	public User onStart()
@@ -80,26 +85,35 @@ public class UserBaseClass
 		User user;
 		
 		if(role == User.Role.Buyer) {
-			user = new Buyer();
+			user = new Buyer(name, pass, email, role);
 		}	
 		
 		else if(role == User.Role.Seller) {
-			user = new Seller();
+			user = new Seller(name, pass, email, role);
 		}	
 
 		else { 
-			user = new Admin();
+			user = new Admin(name, pass, email, role);
 		}	
 		
-		
+		/*
 		user.setName(name);
 		user.setPass(pass);
 		user.setEmail(email);
 		user.setRole(role);
+		*/
+		
+		addUser(user);
 		
 		return user;
 	
 	}
+	
+	public static void addUser(User user)
+	{
+		UserList.add(user);
+	}
+	
 	
 	public static User invokeLogin(String name, String pass)
 	{
