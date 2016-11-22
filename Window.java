@@ -10,7 +10,7 @@ public class Window extends JFrame
 	public final int FRAME_HEIGHT = 600;	
 
 	//helper to aggregate and organize UI elements and dialogs
-	UIElementHelper UIHelper = new UIElementHelper();
+	StartupHelper SUPHelper = new StartupHelper();
 	
 	//check onstart
 	static boolean onStart = true;
@@ -29,7 +29,7 @@ public class Window extends JFrame
         
         //setting initialDialog on startup only
 		if(onStart) {
-			JDialog initialDialog = UIHelper.Initial();
+			JDialog initialDialog = SUPHelper.Initial();
 			initialDialog.setVisible(true);
 			onStart = false;
 		}

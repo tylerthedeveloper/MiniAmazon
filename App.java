@@ -21,13 +21,6 @@ public class App
 		UsrBase = new UserBaseClass();
 		NavStack = new Stack<UIPage>();
 		Window = new Window();
-		//Window.add(NavStack);
-
-		//initiate login sequence
-		//User = usrBase.onStart();
-
-		//set home page
-		//setMainPage();
 	}
 	
 	/*

@@ -1,12 +1,14 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
 
-public class UIElementHelper extends JDialog
+public class StartupHelper extends JDialog
 {
 
 	//constructor
-	public UIElementHelper() {}
+	public StartupHelper() {}
 	
 	public JDialog Initial()
 	{
@@ -85,6 +87,15 @@ public class UIElementHelper extends JDialog
 		final JTextField name = new JTextField("name");
 		final JTextField password = new JTextField("password");
 		final JTextField email = new JTextField("email");
+		final ButtonGroup roleGroup = new ButtonGroup();
+		final JRadioButton buyerButton = new JRadioButton("Buyer");
+		buyerButton.setSelected(true);
+		final JRadioButton sellerButton = new JRadioButton("Seller");
+		final JRadioButton adminButton = new JRadioButton("Admin");
+	    //buyerButton.setMnemonic(KeyEvent.VK_D);
+    	roleGroup.add(buyerButton);
+    	roleGroup.add(sellerButton);
+    	roleGroup.add(adminButton);
 		final JTextField role = new JTextField("role");
 		JButton register = new JButton("Register");
 		register.addActionListener(new ActionListener() 
@@ -92,18 +103,32 @@ public class UIElementHelper extends JDialog
 			public void actionPerformed(ActionEvent e)
 		  	{
 		  		dispose();
+		  		User.Role role;
+
+		  		if(buyerButton.isSelected())
+			  		role = User.Role.Buyer;
+			  		
+			  	else if(sellerButton.isSelected())
+			  		role = User.Role.Seller;
+			  		
+		  		else
+			  		role = User.Role.Admin;		  		
+		  		
 		  		App.User = UserBaseClass.register(name.getText(), password.getText(), 
-								  		email.getText(), User.Role.Buyer);
-				//System.out.print(App.User.getRole());
-				App.Window.add(getUserPage(User.Role.Seller));
-				//App.Window.setVisible(true);
+								  					email.getText(), role);
+				App.Window.add(getUserPage(role));
 		  	}
 		});
+		
 		logPan.add(name);
 		logPan.add(password);
 		logPan.add(email);
 		logPan.add(role);
 		logPan.add(register);
+		logPan.add(buyerButton);
+    	logPan.add(sellerButton);
+    	logPan.add(adminButton);
+    	
         loginDialog.setSize(new Dimension(400, 100));
         loginDialog.setLocationRelativeTo(this);
         loginDialog.setModal(true);
@@ -126,7 +151,5 @@ public class UIElementHelper extends JDialog
 		else { 
 			return new AdminPage();
 		}
-
-		
 	}
 }

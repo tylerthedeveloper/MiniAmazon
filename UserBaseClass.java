@@ -5,13 +5,6 @@ import java.util.Scanner;
 public class UserBaseClass
 {
 	public UserBaseClass() {}
-	
-	public enum Role 
-	{
-		Buyer,
-		Seller,
-		Admin
-	};
 
 	/*
 	public User onStart()
