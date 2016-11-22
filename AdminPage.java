@@ -3,9 +3,9 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class UserPage extends UIPage
+public class AdminPage extends UIPage
 {
-	public UserPage()
+	public AdminPage()
 	{
 		super();		
 	    //setting frame specifics

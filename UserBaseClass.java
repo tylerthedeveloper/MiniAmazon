@@ -13,6 +13,7 @@ public class UserBaseClass
 		Admin
 	};
 
+	/*
 	public User onStart()
 	{
 		//User = usrBase.login();
@@ -51,7 +52,7 @@ public class UserBaseClass
 			
 			int _role = scanner.nextInt();
 			//enum role;
-			Role role; //= new Role();
+			User.Role role; //= new Role();
 			
 			if(_role == 1) {
 				role = Role.Buyer;
@@ -76,32 +77,33 @@ public class UserBaseClass
 			
 			return this.register(name, pass, email, role);
 		}	
-		
 	}
+	*/
 	
 	//register new user
 	//return that new User
-	public static User register(String name, String pass, String email, Role role)
+	public static User register(String name, String pass, String email, User.Role role) //Role
 	{
 		User user;
 		
-		if(role == Role.Buyer) {
+		if(role == User.Role.Buyer) {
 			user = new Buyer();
 		}	
 		
-		else if(role == Role.Seller) {
+		else if(role == User.Role.Seller) {
 			user = new Seller();
 		}	
 
 		else { 
 			user = new Admin();
 		}	
-
+		
+		
 		user.setName(name);
 		user.setPass(pass);
 		user.setEmail(email);
-		user.setRole(role.toString());
-
+		user.setRole(role);
+		
 		return user;
 	
 	}
@@ -109,7 +111,7 @@ public class UserBaseClass
 	public static User invokeLogin(String name, String pass)
 	{
 		//look up in database user and return that user
-		return new User();
+		return new Buyer();
 	}
 	
 }

@@ -26,7 +26,6 @@ public class UIElementHelper extends JDialog
 			public void actionPerformed(ActionEvent e)
 		  	{
 		  		dispose();
-		  		//dialog.setVisible(false);
 		  		loginButtonClicked();
 		  	}
 		});
@@ -65,9 +64,9 @@ public class UIElementHelper extends JDialog
 			public void actionPerformed(ActionEvent e)
 		  	{
 		  		dispose();
-		  		Window window = new Window();
-		  		window.add(new UserPage());
-		  		window.setVisible(true);
+		  		//System.out.print(App.User);
+		  		App.Window.add(new BuyerPage());
+				App.Window.setVisible(true);
 		  	}
 		});
 		logPan.add(loginButton);
@@ -81,28 +80,53 @@ public class UIElementHelper extends JDialog
 	public void registerButtonClicked()
 	{		
 	    JDialog loginDialog = new JDialog(this);
-        loginDialog.setTitle("Logiaan");
+        loginDialog.setTitle("Register");
         JPanel logPan = new JPanel();
-		JTextField name = new JTextField("name");
-		JTextField password = new JTextField("password");
+		final JTextField name = new JTextField("name");
+		final JTextField password = new JTextField("password");
+		final JTextField email = new JTextField("email");
+		final JTextField role = new JTextField("role");
 		JButton register = new JButton("Register");
 		register.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e)
 		  	{
 		  		dispose();
-		  		Window window = new Window();
-		  		window.add(new UserPage());
-		  		window.setVisible(true);
+		  		App.User = UserBaseClass.register(name.getText(), password.getText(), 
+								  		email.getText(), User.Role.Buyer);
+				//System.out.print(App.User.getRole());
+				App.Window.add(getUserPage(User.Role.Seller));
+				//App.Window.setVisible(true);
 		  	}
 		});
 		logPan.add(name);
 		logPan.add(password);
+		logPan.add(email);
+		logPan.add(role);
 		logPan.add(register);
         loginDialog.setSize(new Dimension(400, 100));
         loginDialog.setLocationRelativeTo(this);
         loginDialog.setModal(true);
         loginDialog.add(logPan);
 		loginDialog.setVisible(true);
+	}
+	
+	public UIPage getUserPage(User.Role role) 
+	{
+		App.Window.setVisible(true);
+		
+		if(role == User.Role.Buyer) {
+			return new BuyerPage();
+		}	
+		
+		else if(role == User.Role.Seller) {
+			return new SellerPage();
+		}	
+
+		else { 
+			return new AdminPage();
+		}
+
+		
 	}
 }

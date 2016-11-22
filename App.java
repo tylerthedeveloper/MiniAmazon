@@ -1,26 +1,30 @@
 //import src.UserBase.*;
 //import src.InventoryRepo.*;
 import java.awt.*;
+import java.util.*;
 import javax.swing.*;
+
 
 public class App
 {
 	//member instance variables
-	InventoryRepoClass invRepo;
-	UserBaseClass usrBase;
+	public static InventoryRepoClass InvRepo;
+	public static UserBaseClass UsrBase;
 	public static User User;
 	public static JFrame Window;
+	public static Stack<UIPage> NavStack;
 	
 	public App()
 	{
 		//initialize App classes
-		invRepo = new InventoryRepoClass();
-		usrBase = new UserBaseClass();
-
+		InvRepo = new InventoryRepoClass();
+		UsrBase = new UserBaseClass();
+		NavStack = new Stack<UIPage>();
 		Window = new Window();
+		//Window.add(NavStack);
 
 		//initiate login sequence
-		User = usrBase.onStart();
+		//User = usrBase.onStart();
 
 		//set home page
 		//setMainPage();
