@@ -10,5 +10,15 @@ public class Buyer extends User
 	super(name, pass, email, role);
     }
 
-    
+    public Item makePurchase(Item item) {
+ 
+    }
+
+    public ArrayList<Item> searchItem(String name, String cat, int num) {
+
+    }
+
+    public ArrayList<Item> getOnSale(String cat) {
+
+    }
 }
