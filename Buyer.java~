@@ -10,20 +10,5 @@ public class Buyer extends User
 	super(name, pass, email, role);
     }
 
-    public boolean updateItem(Item item) {
-	
-    }
-
-    public ArrayList<Item> seeInventory() {
-
-    }
-
-    public boolean shipItem(Item item, Buyer buyer) {
-
-    }
-
-    public boolean notifyBuyer(Buyer buyer, String message) {
-
-    }
     
 }
