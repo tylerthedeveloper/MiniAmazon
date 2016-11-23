@@ -1,16 +1,17 @@
 //package Userbase;
 
-public class Seller extends User
+public class Buyer extends User
 {
-    public Seller () {}
-		
-    public Seller(String name, String pass, String email, Role role)
+
+    public Buyer () {}
+	
+    public Buyer (String name, String pass, String email, Role role)
     {
 	super(name, pass, email, role);
     }
 
     public boolean updateItem(Item item) {
-
+	
     }
 
     public ArrayList<Item> seeInventory() {
@@ -21,7 +22,7 @@ public class Seller extends User
 
     }
 
-    public boolean notifyUser(Buyer buyer, String message) {
+    public boolean notifyBuyer(Buyer buyer, String message) {
 
     }
     
