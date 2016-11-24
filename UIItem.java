@@ -116,7 +116,7 @@ public class UIItem extends JPanel
 		UIItem itemSectionFull = new UIItem(true);
 		Item _item = item;
 	    JDialog jd = new JDialog();
-	    jd.setSize(new Dimension(400, 100));
+	    jd.setSize(new Dimension(500, 300));
         jd.setLocationRelativeTo(this);
         jd.setModal(true);
 	    JPanel jdPan = new JPanel(true);
@@ -130,24 +130,13 @@ public class UIItem extends JPanel
 	{
 		if(App.User instanceof Buyer) {
 			((Buyer)App.User).addToCart(item);
-			BuyerPage.shopCounter.setText(String.valueOf(((Buyer)App.User).ShoppingCart.getCount()));
+			BuyerPage.updateCart();
 		}
 	}
 	
 	public void orderItem(Item item) //Item item
 	{
-		System.out.print(item.getPrice());
-		UIItem itemSectionFull = new UIItem(true);
-		Item item2 = new Item("itemID", "name", Item.Category.Electronics, "description", 50, 50, true, "sellerID");
-	    JDialog jd = new JDialog();
-	    jd.setSize(new Dimension(400, 100));
-        jd.setLocationRelativeTo(this);
-        jd.setModal(true);
-	    JPanel jdPan = new JPanel(true);
-	    jdPan.add(itemSectionFull);
-	    jdPan.add(new UIItem(item2, true));
-	    jd.add(jdPan);
-		jd.setVisible(true);
+		((Buyer)App.User).makePurchase(item);
 	}
 		
 }

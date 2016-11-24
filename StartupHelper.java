@@ -72,7 +72,7 @@ public class StartupHelper extends JDialog
 		  	}
 		});
 		logPan.add(loginButton);
-        loginDialog.setSize(new Dimension(400, 100));
+        loginDialog.setSize(new Dimension(500, 300));
         loginDialog.setLocationRelativeTo(this);
         loginDialog.setModal(true);
         loginDialog.add(logPan);
@@ -129,7 +129,7 @@ public class StartupHelper extends JDialog
     	logPan.add(sellerButton);
     	logPan.add(adminButton);
     	
-        loginDialog.setSize(new Dimension(400, 100));
+        loginDialog.setSize(new Dimension(500, 300));
         loginDialog.setLocationRelativeTo(this);
         loginDialog.setModal(true);
         loginDialog.add(logPan);
