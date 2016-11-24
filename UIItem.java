@@ -63,12 +63,21 @@ public class UIItem extends JPanel
 				itemSelected(_item);
 		  	}
 		});
+	    JButton add2Cart = new JButton("Add2Cart");
+	    add2Cart.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e)
+		  	{
+				addToCart(_item);
+		  	}
+		});
 	    this.add(itemID);
 	    this.add(productName);
 	    this.add(category);
 	    this.add(price);
 	    this.add(onSale);
 	    this.add(view);
+	    this.add(add2Cart);
 	}
 	
 	public UIItem(Item item, boolean b)
@@ -133,4 +142,21 @@ public class UIItem extends JPanel
 		jd.setVisible(true);
 	}
 	
+	public void addToCart(Item item) //Item item
+	{
+		System.out.print(item.getPrice());
+		UIItem itemSectionFull = new UIItem(true);
+		Item item2 = new Item("itemID", "name", Item.Category.Electronics, "description", 50, 50, true, "sellerID");
+	    JDialog jd = new JDialog();
+	    jd.setSize(new Dimension(400, 100));
+        jd.setLocationRelativeTo(this);
+        jd.setModal(true);
+	    JPanel jdPan = new JPanel(true);
+	    jdPan.add(itemSectionFull);
+	    jdPan.add(new UIItem(item2, true));
+	    jd.add(jdPan);
+		jd.setVisible(true);
+	}
+	
+		
 }
