@@ -3,14 +3,14 @@ import java.util.*;
 
 public class Buyer extends User
 {
-	ShoppingCart _shoppingCart;
+	public ShoppingCart ShoppingCart;
 	
     public Buyer () {}
 	
     public Buyer (String name, String pass, String email, Role role)
     {
 		super(name, pass, email, role);
-		_shoppingCart = new ShoppingCart();
+		ShoppingCart = new ShoppingCart();
     }
 
     public Item makePurchase(Item item) {
@@ -18,11 +18,11 @@ public class Buyer extends User
     }
     
     public void addToCart(Item item) {
- 		this._shoppingCart.addItem(item);
+ 		this.ShoppingCart.addItem(item);
     }
     
     public void removeFromCart(Item item) {
- 		this._shoppingCart.removeItem(item);
+ 		this.ShoppingCart.removeItem(item);
     }
 
     public ArrayList<Item> searchItem(String name, String cat, int num) {
