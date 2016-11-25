@@ -86,6 +86,10 @@ public class Item
 		return _quantity;
 	}
 	
+	public void updateQuantity(int quant) {
+		_quantity+=quant;
+	}
+	
 	public void setSale(boolean onSale) {
 		_onSale = onSale;
 	}

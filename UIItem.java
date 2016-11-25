@@ -92,12 +92,13 @@ public class UIItem extends JPanel
 		JLabel quantity = new JLabel(Integer.toString(item.getQuantity()));
 	    JLabel onSale = new JLabel(String.valueOf(item.getSale()));
 	    JLabel sellerID = new JLabel(item.getSellerID());
+	    final JLabel quant = new JLabel("how many to order");
 	    JButton order = new JButton("Order");
 	    order.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e)
 		  	{
-				orderItem(_item);
+				orderItem(_item, Integer.parseInt(quant.getText()));
 		  	}
 		});
 	    this.add(itemID);
@@ -134,9 +135,9 @@ public class UIItem extends JPanel
 		}
 	}
 	
-	public void orderItem(Item item)
+	public void orderItem(Item item, int amountToOrder)
 	{
-		App.InvRepo.processOrder(item);		
+		App.InvRepo.processOrder(item, amountToOrder);		
 	}
 		
 }
