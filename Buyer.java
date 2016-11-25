@@ -17,12 +17,11 @@ public class Buyer extends User
 		MyTransactionList = new ArrayList<Transaction>();
     }
 
-    public Item makePurchase(Item item) {
+    public HashMap<Item, Transaction> makePurchase(Item item, Transaction transaction) {
     	//make new transaction
-    	//
     	MyItemList.add(item);
-    	System.out.print(MyItemList.get(0));
- 		return new Item();
+    	MyTransactionList.add(transaction);
+ 		return new HashMap<Item, Transaction>();
     }
     
     public void addToCart(Item item) {

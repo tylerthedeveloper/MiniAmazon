@@ -136,12 +136,7 @@ public class UIItem extends JPanel
 	
 	public void orderItem(Item item)
 	{
-		((Buyer)App.User).makePurchase(item);
-		//my transaction
-		//((Buyer)App.User).makePurchase(item);
-		//market transaction
-		//((Buyer)App.User).makePurchase(item);
-		
+		App.InvRepo.processOrder(item);		
 	}
 		
 }
