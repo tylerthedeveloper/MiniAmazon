@@ -81,7 +81,8 @@ public class UIItem extends JPanel
 	}
 	
 	static SpinnerNumberModel numModel; 
-	
+	static JButton order;
+	static JLabel quantity;
 	public UIItem(Item item, boolean b)
 	{
 		super();
@@ -91,17 +92,17 @@ public class UIItem extends JPanel
 	    JLabel category = new JLabel(item.getCategory().toString());
 	    JLabel description = new JLabel(item.getDescription());
 	    JLabel price = new JLabel(Integer.toString(item.getPrice()));
-		JLabel quantity = new JLabel(Integer.toString(item.getQuantity()));
+		quantity = new JLabel(Integer.toString(item.getQuantity()));
 	    JLabel onSale = new JLabel(String.valueOf(item.getSale()));
 	    JLabel sellerID = new JLabel(item.getSellerID());
 	    Integer value = new Integer(item.getQuantity());
-		Integer min = new Integer(1);
+		Integer min = new Integer(0);
 		Integer max = new Integer(item.getQuantity());
 		Integer step = new Integer(1);
 		//final SpinnerNumberModel numModel = new SpinnerNumberModel(value, min, max, step);
 		numModel = new SpinnerNumberModel(value, min, max, step);
 		final JSpinner spinner = new JSpinner(numModel);
-	    JButton order = new JButton("Order");
+		order = new JButton("Order");
 	    order.addActionListener(new ActionListener() 
 		{		
 			public void actionPerformed(ActionEvent e)
@@ -160,21 +161,24 @@ public class UIItem extends JPanel
 
 	public void orderItem(Item item, int amountToOrder)
 	{
-		System.out.println(item.getQuantity());
+		System.out.println("in order");
+		//System.out.println(item.getQuantity());
 		App.InvRepo.processOrder(item, amountToOrder);
-		System.out.println(item.getQuantity());
+		//System.out.println(item.getQuantity());
 		updateItemCount(item);
 	}
 
 
 	public void updateItemCount(Item item)
 	{
-		numModel.setValue(item.getQuantity());
+		quantity.setText(String.valueOf(item.getQuantity()));
+		numModel.setValue(0);
 	}
 	
 	
 	public static void stockOut(Item item)
 	{
+		order.setText("Out-of-stock");
 		JPanel jdPan = new JPanel(true);
 	    JLabel title = new JLabel("Stockout");
 	    JLabel itemName = new JLabel(item.getName());

@@ -38,8 +38,9 @@ public class BuyerPage extends UIPage
         int cartCount = (int)((Buyer)App.User).ShoppingCart.getCount()+shopCount;
         shopCounter = new JLabel(String.valueOf(cartCount));
         UIItem itemSectionShort = new UIItem();
-        Item item = new Item("itemID", "name", Item.Category.Electronics, "description", 50, 50, true, "sellerID");
-        UIItem item1 = new UIItem(item);
+        //Item item = new Item("itemID", "name", Item.Category.Electronics, "description", 50, 50, true, "sellerID");
+        UIItem item1 = new UIItem(new Item("itemID", "name", Item.Category.Electronics, "description", 50, 50, true, "sellerID"));
+        UIItem item2 = new UIItem(new Item("itemID2", "name2", Item.Category.Electronics, "description2", 50, 50, true, "sellerID2"));
         this.add(productList);
         this.add(searchProducts);
         this.add(viewCategories);
@@ -48,6 +49,7 @@ public class BuyerPage extends UIPage
         this.add(personIcon);
         this.add(itemSectionShort);
         this.add(item1);
+        this.add(item2);
     }	
     
     
