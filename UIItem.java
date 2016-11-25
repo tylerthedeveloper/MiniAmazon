@@ -108,11 +108,10 @@ public class UIItem extends JPanel
 			public void actionPerformed(ActionEvent e)
 		  	{
 			  	int amountDesired = (int)spinner.getValue();
-				//System.out.println(spinner.getValue());
-				//System.out.println(numModel.getValue());
-				//System.out.println(amountDesired);
-				if(inStock(_item, amountDesired)) {
+				if(enoughStock(_item, amountDesired)) {
 					orderItem(_item, amountDesired);
+				} else if(inStock(_item)) {
+					underStock(_item);
 				} else {
 					stockOut(_item);
 				}
@@ -153,7 +152,13 @@ public class UIItem extends JPanel
 		}
 	}
 	
-	public static boolean inStock(Item item, int amountToOrder)
+	
+	public static boolean inStock(Item item)
+	{
+		return (item.getQuantity() > 0);
+	}
+	
+	public static boolean enoughStock(Item item, int amountToOrder)
 	{
 		return (item.getQuantity() >= amountToOrder);
 	}
@@ -162,10 +167,9 @@ public class UIItem extends JPanel
 	public void orderItem(Item item, int amountToOrder)
 	{
 		System.out.println("in order");
-		//System.out.println(item.getQuantity());
 		App.InvRepo.processOrder(item, amountToOrder);
-		//System.out.println(item.getQuantity());
 		updateItemCount(item);
+		if(!inStock(item)) order.setText("Out-of-stock");
 	}
 
 
@@ -175,10 +179,27 @@ public class UIItem extends JPanel
 		numModel.setValue(0);
 	}
 	
+	public static void underStock(Item item)
+	{
+		//order.setText("Out-of-stock");
+		JPanel jdPan = new JPanel(true);
+	    JLabel title = new JLabel("Stockout");
+	    JLabel itemName = new JLabel(item.getName());
+	    JLabel message  = new JLabel("we are sorry, but we do not have that many in stock");
+	    jdPan.add(title);
+	    jdPan.add(itemName);
+	    jdPan.add(message);
+	    JDialog jd = new JDialog();
+	    jd.setSize(new Dimension(500, 300));
+        jd.setModal(true);
+	    jd.add(jdPan);
+		jd.setVisible(true);
+	}
+
 	
 	public static void stockOut(Item item)
 	{
-		order.setText("Out-of-stock");
+		//order.setText("Out-of-stock");
 		JPanel jdPan = new JPanel(true);
 	    JLabel title = new JLabel("Stockout");
 	    JLabel itemName = new JLabel(item.getName());

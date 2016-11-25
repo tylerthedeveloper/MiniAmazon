@@ -36,7 +36,8 @@ public class Seller extends User implements InventoryInterface
 	return item;
     }
 
-    public void editItem(Item item, String _itemID, String _name, Category _category, String _description, int _price, int _quantity, boolean _onSale) {
+    public void editItem(Item item, String _itemID, String _name, Category _category, 
+    					String _description, int _price, int _quantity, boolean _onSale) {
 	
 	for (int i = 0; i < items.size(); i++) {
 	    if (items.get(i).equals(item)) {
@@ -73,20 +74,20 @@ public class Seller extends User implements InventoryInterface
 
 	    break;
 
-	}
+		}
 
     }
 
     public void addItem(Item item) {
-	this.items.add(item);
+		this.items.add(item);
     }
 
     public void deleteItem(Item item) {
-	for (int i = 0; i < items.size(); i++) {
-	    if (items.get(i).equals(item)) {
-		items.remove(item);
-		break;
+		for (int i = 0; i < items.size(); i++) {
+			if (items.get(i).equals(item)) {
+				items.remove(item);
+				break;
+			}
+    	}
 	}
-    }
-    
 }
