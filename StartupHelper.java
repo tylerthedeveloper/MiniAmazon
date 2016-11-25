@@ -6,7 +6,6 @@ import java.awt.CheckboxGroup;
 
 public class StartupHelper extends JDialog
 {
-
 	//constructor
 	public StartupHelper() {}
 	
