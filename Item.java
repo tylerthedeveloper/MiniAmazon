@@ -87,7 +87,7 @@ public class Item
 	}
 	
 	public void updateQuantity(int quant) {
-		_quantity+=quant;
+		_quantity-=quant;
 	}
 	
 	public void setSale(boolean onSale) {

@@ -80,6 +80,8 @@ public class UIItem extends JPanel
 	    this.add(add2Cart);
 	}
 	
+	static SpinnerNumberModel numModel; 
+	
 	public UIItem(Item item, boolean b)
 	{
 		super();
@@ -92,13 +94,27 @@ public class UIItem extends JPanel
 		JLabel quantity = new JLabel(Integer.toString(item.getQuantity()));
 	    JLabel onSale = new JLabel(String.valueOf(item.getSale()));
 	    JLabel sellerID = new JLabel(item.getSellerID());
-	    final JLabel quant = new JLabel("how many to order");
+	    Integer value = new Integer(item.getQuantity());
+		Integer min = new Integer(1);
+		Integer max = new Integer(item.getQuantity());
+		Integer step = new Integer(1);
+		//final SpinnerNumberModel numModel = new SpinnerNumberModel(value, min, max, step);
+		numModel = new SpinnerNumberModel(value, min, max, step);
+		final JSpinner spinner = new JSpinner(numModel);
 	    JButton order = new JButton("Order");
 	    order.addActionListener(new ActionListener() 
-		{
+		{		
 			public void actionPerformed(ActionEvent e)
 		  	{
-				orderItem(_item, Integer.parseInt(quant.getText()));
+			  	int amountDesired = (int)spinner.getValue();
+				//System.out.println(spinner.getValue());
+				//System.out.println(numModel.getValue());
+				//System.out.println(amountDesired);
+				if(inStock(_item, amountDesired)) {
+					orderItem(_item, amountDesired);
+				} else {
+					stockOut(_item);
+				}
 		  	}
 		});
 	    this.add(itemID);
@@ -109,6 +125,7 @@ public class UIItem extends JPanel
 	    this.add(quantity);
 	    this.add(onSale);
 	    this.add(sellerID);
+	    this.add(spinner);
 	    this.add(order);
 	}
 	
@@ -135,9 +152,42 @@ public class UIItem extends JPanel
 		}
 	}
 	
+	public static boolean inStock(Item item, int amountToOrder)
+	{
+		return (item.getQuantity() >= amountToOrder);
+	}
+
+
 	public void orderItem(Item item, int amountToOrder)
 	{
-		App.InvRepo.processOrder(item, amountToOrder);		
+		System.out.println(item.getQuantity());
+		App.InvRepo.processOrder(item, amountToOrder);
+		System.out.println(item.getQuantity());
+		updateItemCount(item);
 	}
-		
+
+
+	public void updateItemCount(Item item)
+	{
+		numModel.setValue(item.getQuantity());
+	}
+	
+	
+	public static void stockOut(Item item)
+	{
+		JPanel jdPan = new JPanel(true);
+	    JLabel title = new JLabel("Stockout");
+	    JLabel itemName = new JLabel(item.getName());
+	    JLabel message  = new JLabel("we are sorry, but that item is out of stock. \n " + 
+	    							"We will notify you when it returns " + 
+	    							"and give you a coupon");
+	    jdPan.add(title);
+	    jdPan.add(itemName);
+	    jdPan.add(message);
+	    JDialog jd = new JDialog();
+	    jd.setSize(new Dimension(500, 300));
+        jd.setModal(true);
+	    jd.add(jdPan);
+		jd.setVisible(true);
+	}
 }

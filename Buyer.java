@@ -6,6 +6,7 @@ public class Buyer extends User
 	public ShoppingCart ShoppingCart;
 	public ArrayList<Item> MyItemList;
 	public ArrayList<Transaction> MyTransactionList;
+	private int accountBalance;
 	
     public Buyer () {}
 	
@@ -15,6 +16,7 @@ public class Buyer extends User
 		ShoppingCart = new ShoppingCart();
 		MyItemList = new ArrayList<Item>();
 		MyTransactionList = new ArrayList<Transaction>();
+		accountBalance = 1000;
     }
 
     public HashMap<Item, Transaction> makePurchase(Item item, Transaction transaction) {
