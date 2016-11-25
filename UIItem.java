@@ -102,13 +102,16 @@ public class UIItem extends JPanel
 		//final SpinnerNumberModel numModel = new SpinnerNumberModel(value, min, max, step);
 		numModel = new SpinnerNumberModel(value, min, max, step);
 		final JSpinner spinner = new JSpinner(numModel);
-		order = new JButton("Order");
+		if(inStock(_item))
+			order = new JButton("Order");
+		else
+			order = new JButton("Out-Of-Stock");
 	    order.addActionListener(new ActionListener() 
 		{		
 			public void actionPerformed(ActionEvent e)
 		  	{
 			  	int amountDesired = (int)spinner.getValue();
-				if(enoughStock(_item, amountDesired)) {
+				if(_item.getQuantity() >= amountDesired && inStock(_item)) {
 					orderItem(_item, amountDesired);
 				} else if(inStock(_item)) {
 					underStock(_item);
@@ -157,11 +160,12 @@ public class UIItem extends JPanel
 	{
 		return (item.getQuantity() > 0);
 	}
-	
+	/*
 	public static boolean enoughStock(Item item, int amountToOrder)
 	{
 		return (item.getQuantity() >= amountToOrder);
 	}
+	*/
 
 
 	public void orderItem(Item item, int amountToOrder)

@@ -13,11 +13,8 @@ public class App
 	public static User User;
 	public static JFrame Window;
 	public static Stack<UIPage> NavStack;
-	//helper to aggregate and organize UI elements and dialogs
+		
 	
-	StartupHelper SUPHelper; //= new StartupHelper();
-	
-	//check onstart
 	static boolean onStart = true;
 
 	public App()
@@ -28,13 +25,15 @@ public class App
         InvRepo.MarketItemList.add(new Item("itemID2", "name2", Item.Category.Electronics, "description2", 50, 50, true, "sellerID2"));
 		UsrBase = new UserBaseClass();
 		NavStack = new Stack<UIPage>();
-		SUPHelper = new StartupHelper();
 		startUp();
 		Window = new Window();
 	}
 	
 	public void startUp() {
+		//check onstart
 		if(onStart) {
+			//helper to aggregate and organize UI elements and dialogs
+			StartupHelper SUPHelper = new StartupHelper();
 			JDialog initialDialog = SUPHelper.Initial();
 			initialDialog.setVisible(true);
 			onStart = false;
