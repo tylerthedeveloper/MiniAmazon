@@ -4,8 +4,8 @@ import java.util.*;
 public class Buyer extends User
 {
 	public ShoppingCart ShoppingCart;
-	public ArrayList<Item> ItemList;
-	public ArrayList<Transaction> TransactionList;
+	public ArrayList<Item> MyItemList;
+	public ArrayList<Transaction> MyTransactionList;
 	
     public Buyer () {}
 	
@@ -13,15 +13,15 @@ public class Buyer extends User
     {
 		super(name, pass, email, role);
 		ShoppingCart = new ShoppingCart();
-		ItemList = new ArrayList<Item>();
-		TransactionList = new ArrayList<Transaction>();
+		MyItemList = new ArrayList<Item>();
+		MyTransactionList = new ArrayList<Transaction>();
     }
 
     public Item makePurchase(Item item) {
     	//make new transaction
     	//
-    	ItemList.add(item);
-    	System.out.print(ItemList.get(0));
+    	MyItemList.add(item);
+    	System.out.print(MyItemList.get(0));
  		return new Item();
     }
     

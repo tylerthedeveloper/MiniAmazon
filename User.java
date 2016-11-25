@@ -20,14 +20,14 @@ abstract class User
 	
 	public User (String name, String pass, String email, Role role) 
 	{
-		this.setUserID(createNewGUID());
+		this.setUserID(createNewUserGUID());
 		this.setName(name);
 		this.setPass(pass);
 		this.setEmail(email);
 		this.setRole(role);
 	}
 	
-	public String createNewGUID() {
+	public String createNewUserGUID() {
 		return "new GUID";
 	}
 	

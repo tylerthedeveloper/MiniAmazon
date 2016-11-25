@@ -1,4 +1,4 @@
-//package src.Userbase;
+//package src.InventoryRepo;
 
 public class Item
 {
@@ -32,6 +32,10 @@ public class Item
 		this.setQuantity(quantity);
 		this.setSale(onSale);
 		this.setSellerID(sellerID);
+	}
+	
+	public String createNewItemGUID() {
+		return "new Item GUID";
 	}
 	
 	public void setItemID(String itemID){

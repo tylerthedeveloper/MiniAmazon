@@ -1,36 +1,49 @@
 
 public class Transaction
 {
+	String _itemID;
 	String _transactionID;
 	String _name;
-	Category _category;
+	Item.Category _category;
 	String _description;
 	int _price;
 	int _quantity;
 	boolean _onSale;
 	String _sellerID;
-	
+
+/*	
 	public static enum Category 
 	{
 		Electronics,
 		Software,
 		Books
 	};
+*/	
 	
-	
-	public Transaction () {}
-	
-	public Transaction (String transactionID, String name, Category category, String description,
-				int price, int quantity, boolean onSale, String sellerID)
+	//public Transaction (String transactionID, String name, Category category, String description, int price, int quantity, boolean onSale, String sellerID)
+	public Transaction (Item item)
 	{
-		this.setTransactionID(transactionID);
-		this.setName(name);
-		this.setCategory(category);
-		this.setDescription(description);
-		this.setPrice(price);
-		this.setQuantity(quantity);
-		this.setSale(onSale);
-		this.setSellerID(sellerID);
+		this.setItemID(item.getItemID());
+		this.setTransactionID(createNewTransactionGUID());
+		this.setName(item.getName());
+		this.setCategory(item.getCategory());
+		this.setDescription(item.getDescription());
+		this.setPrice(item.getPrice());
+		this.setQuantity(item.getQuantity());
+		this.setSale(item.getSale());
+		this.setSellerID(item.getSellerID());
+	}
+	
+	public String createNewTransactionGUID() {
+		return "new Trans GUID";
+	}
+	
+	public void setItemID(String itemID){
+		_itemID = itemID;
+	}
+
+	public String getItemID(){
+		return _itemID;
 	}
 	
 	public void setTransactionID(String transactionID){
@@ -49,11 +62,11 @@ public class Transaction
 		return _name;
 	}
 
-	public void setCategory(Category category){
+	public void setCategory(Item.Category category){
 		_category = category;
 	}
 	
-	public Category getCategory(){
+	public Item.Category getCategory(){
 		return _category;
 	}
 	

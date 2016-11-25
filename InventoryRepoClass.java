@@ -3,10 +3,12 @@ import java.util.ArrayList;
 
 public class InventoryRepoClass
 {
-	public static ArrayList<Item> ItemList;
+	public static ArrayList<Item> MarketItemList;
+	public static ArrayList<Transaction> MarketTransactionList;
 	
 	public InventoryRepoClass() {
-		ItemList = new ArrayList<Item>();
+		MarketItemList = new ArrayList<Item>();
+		MarketTransactionList = new ArrayList<Transaction>();
 	}
 
 }
