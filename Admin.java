@@ -2,7 +2,7 @@
 //import Userbase.User;
 import java.util.ArrayList;
 
-public class Admin extends User
+public class Admin extends User implements InventoryInterface
 {
     public Admin () {}
 	
@@ -36,4 +36,20 @@ public class Admin extends User
 	    throw new UnsupportedOperationException();
     }
     
+
+    public Item viewItem() {
+
+    }
+
+    public void editItem() {
+
+    }
+
+    public void addItem() {
+
+    }
+
+    public void deleteItem() {
+
+    }
 }

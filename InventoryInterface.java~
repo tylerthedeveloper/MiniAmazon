@@ -1,0 +1,11 @@
+public interface InventoryInterface {
+
+    Item viewItem();
+
+    void editItem();
+
+    void addItem();
+
+    void deleteItem();
+
+}
