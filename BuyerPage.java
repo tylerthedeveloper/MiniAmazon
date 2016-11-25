@@ -18,12 +18,21 @@ public class BuyerPage extends UIPage
         JButton searchProducts = new JButton("Search Products");
         JButton viewCategories = new JButton("View Categories");
         ImageIcon icon = new ImageIcon("cart.png");
-        JLabel cartIcon = new JLabel("cart", icon, JLabel.CENTER);
+        JLabel cartIcon = new JLabel("", icon, JLabel.CENTER);
         cartIcon.addMouseListener(new MouseAdapter()   
         {   
 			public void mouseClicked(MouseEvent e)  
 		  	{
 				viewShoppingCart();
+		  	}
+		});
+		ImageIcon person = new ImageIcon("person.png");
+        JLabel personIcon = new JLabel("profile", person, JLabel.CENTER);
+        personIcon.addMouseListener(new MouseAdapter()   
+        {   
+			public void mouseClicked(MouseEvent e)  
+		  	{
+				viewProfile();
 		  	}
 		});
         int cartCount = (int)((Buyer)App.User).ShoppingCart.getCount()+shopCount;
@@ -36,6 +45,7 @@ public class BuyerPage extends UIPage
         this.add(viewCategories);
         this.add(cartIcon);
         this.add(shopCounter);
+        this.add(personIcon);
         this.add(itemSectionShort);
         this.add(item1);
     }	
@@ -57,6 +67,29 @@ public class BuyerPage extends UIPage
 		jd.setVisible(true);
 	}
 
+	public void viewProfile()
+	{
+		JPanel jdPan = new JPanel(true);
+	    JLabel userID = new JLabel("UserID");
+	    JLabel name = new JLabel("Name");
+	    JLabel email = new JLabel("Email");
+	    JLabel role = new JLabel("Role");
+	    jdPan.add(userID);
+	    jdPan.add(name);
+	    jdPan.add(email);	    
+	    jdPan.add(role);
+	    jdPan.add(App.User.showProfile());
+	    JDialog jd = new JDialog();
+	    jd.setSize(new Dimension(500, 300));
+        jd.setModal(true);
+	    jd.add(jdPan);
+		//System.out.print(App.User.toString());
+		//JPanel profile = App.User.showProfile();
+		//jd.add(profile);
+		jd.setLocationRelativeTo(this);
+		jd.setVisible(true);
+	}
+	
 	public static void updateCart()
 	{
 		shopCounter.setText(String.valueOf(((Buyer)App.User).ShoppingCart.getCount()));

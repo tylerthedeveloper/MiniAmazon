@@ -1,4 +1,7 @@
 //package src.Userbase;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 abstract class User
 {
@@ -68,6 +71,35 @@ abstract class User
 	}
 	
 	public void hashPass(){}
+	
+	public JPanel showProfile()
+	{
+		JPanel jdPan = new JPanel(true);
+	    JLabel userID = new JLabel(this.getUserID());
+	    JLabel name = new JLabel(this.getName());
+	    JLabel email = new JLabel(this.getEmail());
+	    JLabel role = new JLabel(this.getRole().toString());
+	    JButton edit = new JButton("Edit");
+	    edit.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e)
+		  	{
+				System.out.println("edit profile");	
+		  	}
+		});
+	    jdPan.add(userID);
+	    jdPan.add(name);
+	    jdPan.add(email);	    
+	    jdPan.add(role);
+	    jdPan.add(edit);
+	 	/*
+	 	JDialog jd = new JDialog();
+	    jd.setSize(new Dimension(500, 300));
+        jd.setModal(true);
+	    jd.add(jdPan);
+	    */
+		return jdPan;
+	}
 	
 	public String toString() {
 		return "UserID: " + getUserID() + "\n" +

@@ -6,8 +6,8 @@ public class Window extends JFrame
 {
 
 	//class member instance variables
-	public final int FRAME_WIDTH = 600;
-	public final int FRAME_HEIGHT = 600;	
+	public final int FRAME_WIDTH = 800;
+	public final int FRAME_HEIGHT = 800;	
 
 	//helper to aggregate and organize UI elements and dialogs
 	StartupHelper SUPHelper = new StartupHelper();

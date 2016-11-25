@@ -80,7 +80,7 @@ public class UserBaseClass
 	
 	//register new user
 	//return that new User
-	public static User register(String name, String pass, String email, User.Role role) //Role
+	public static User register(String name, String pass, String email, User.Role role)
 	{
 		User user;
 		
@@ -114,11 +114,22 @@ public class UserBaseClass
 		UserList.add(user);
 	}
 	
+	public static void removeUser(User user)
+	{
+		UserList.remove(user);
+	}
+	
 	
 	public static User invokeLogin(String name, String pass)
 	{
 		//look up in database user and return that user
 		return new Buyer();
+	}
+	
+	public static boolean logout(User user)
+	{
+		//look up in database user and logout that user
+		return true; //loggedOut(user);
 	}
 	
 }
