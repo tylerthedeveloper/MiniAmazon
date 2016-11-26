@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.ImageIcon;
+import java.util.ArrayList;
 
 
 public class BuyerPage extends UIPage
@@ -9,12 +10,21 @@ public class BuyerPage extends UIPage
 
 	public static int shopCount;
 	public static JLabel shopCounter;
+	JPanel jList;
 	
     public BuyerPage()
     {
 		super();		
 		//setting frame specifics
         JButton productList = new JButton("View Products");
+        jList = new JPanel();
+		productList.addActionListener(new ActionListener() 
+		{		
+			public void actionPerformed(ActionEvent e)
+		  	{
+				fillList(App.InvRepo.MarketItemList);		  	
+			}
+		});        
         JButton searchProducts = new JButton("Search Products");
         JButton viewCategories = new JButton("View Categories");
         ImageIcon icon = new ImageIcon("cart.png");
@@ -45,9 +55,6 @@ public class BuyerPage extends UIPage
         this.add(shopCounter);
         this.add(personIcon);
         this.add(itemSectionShort);
-    	for(Item item : App.InvRepo.MarketItemList) {
-        	this.add(new UIItem(item));
-        }
     }
     
     public void viewShoppingCart() //Item item
@@ -70,4 +77,19 @@ public class BuyerPage extends UIPage
 	{
 		shopCounter.setText(String.valueOf(((Buyer)App.User).ShoppingCart.getCount()));
 	}
+	
+	public void fillList(ArrayList<Item> list) 
+	{
+		JPanel tempJP = new JPanel();
+    	for(Item item : list) {
+        	tempJP.add(new UIItem(item));
+        }
+        
+		this.remove(jList);
+	    jList = tempJP;
+        this.add(jList);
+        App.Window.revalidate();
+
+
+    }
 }
