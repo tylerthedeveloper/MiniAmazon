@@ -21,7 +21,7 @@ public class Seller extends User //implements InventoryInterface
 		throw new UnsupportedOperationException();
     }
 
-    public ArrayList<Item> seeInventory() {
+    public ArrayList<Item> seeMyInventory() {
 		return this._items;
 	}
 
