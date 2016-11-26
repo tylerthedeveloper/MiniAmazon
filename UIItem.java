@@ -4,6 +4,7 @@ import javax.swing.*;
 
 public class UIItem extends JPanel
 {
+	/*
 	JLabel itemID; // = new JLabel("ItemID");
 	JLabel productName; // = new JLabel("Name");
 	JLabel category; // = new JLabel("Category");
@@ -16,7 +17,7 @@ public class UIItem extends JPanel
 	JLabel orderLabel; // = new JLabel("Order");
 
 	//section headers
-	/*
+	
 	public UIItem()
 	{
 		super();		
@@ -87,12 +88,14 @@ public class UIItem extends JPanel
 	public UIItem(Item item)
 	{
 		super();		
+		
 	    final Item _item = item;
 	    JLabel itemID = new JLabel(item.getItemID());
 	    JLabel productName = new JLabel(item.getName());
 	    JLabel category = new JLabel(item.getCategory().toString());
 	    JLabel price = new JLabel(Integer.toString(item.getPrice()));
 	    JLabel onSale = new JLabel(String.valueOf(item.getSale()));
+	    
 	    JButton view = new JButton("View");
 	    view.addActionListener(new ActionListener() 
 		{
@@ -116,14 +119,76 @@ public class UIItem extends JPanel
 	    this.add(onSale);
 	    this.add(view);
 	    this.add(add2Cart);
+	    
 	}
 	
 	static SpinnerNumberModel numModel; 
 	static JButton order;
-	//static JLabel quantity;
+	static JLabel quantity;
+	
 	public UIItem(Item item, boolean b)
 	{
 		super();
+	    final Item _item = item;
+		this.add(new JLabel(item.getItemID()));
+		this.add(new JLabel(item.getName()));
+		this.add(new JLabel(item.getCategory().toString()));
+		this.add(new JLabel(Integer.toString(item.getPrice())));
+		this.add(new JLabel(String.valueOf(item.getSale())));
+					Integer value = new Integer(item.getQuantity());
+			Integer min = new Integer(0);
+			Integer max = new Integer(item.getQuantity());
+			Integer step = new Integer(1);
+			numModel = new SpinnerNumberModel(value, min, max, step);
+		final JSpinner spinner = new JSpinner(numModel);
+		
+	    if(!b) {			
+		    JButton view = new JButton("View");
+			view.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					itemSelected(_item);
+				}
+			});
+			this.add(new JButton("View"));
+
+			
+			JButton add2Cart = new JButton("Add2Cart");
+			add2Cart.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					add2Cart(_item);
+				}
+			});
+		}
+		else {
+			this.add(new JLabel(item.getDescription()));
+			quantity = new JLabel(Integer.toString(item.getQuantity()));
+			this.add(new JLabel(item.getSellerID()));
+			if(inStock(_item)) { 
+					order = new JButton("Order");
+			} else {
+				order = new JButton("Out-Of-Stock");
+			}
+			order.addActionListener(new ActionListener() 
+			{		
+				public void actionPerformed(ActionEvent e)
+				{
+					int amountDesired = (int)spinner.getValue();
+					if(_item.getQuantity() >= amountDesired && inStock(_item)) {
+						orderItem(_item, amountDesired);
+					} else if(inStock(_item)) {
+						underStock(_item);
+					} else {
+						stockOut(_item);
+					}
+				}
+			});
+			this.add(spinner);
+		}
+		/*
 		final Item _item = item;
 	    JLabel itemID = new JLabel(item.getItemID());
 	    JLabel productName = new JLabel(item.getName());
@@ -133,6 +198,7 @@ public class UIItem extends JPanel
 		quantity = new JLabel(Integer.toString(item.getQuantity()));
 	    JLabel onSale = new JLabel(String.valueOf(item.getSale()));
 	    JLabel sellerID = new JLabel(item.getSellerID());
+	    
 	    Integer value = new Integer(item.getQuantity());
 		Integer min = new Integer(0);
 		Integer max = new Integer(item.getQuantity());
@@ -168,6 +234,9 @@ public class UIItem extends JPanel
 	    this.add(sellerID);
 	    this.add(spinner);
 	    this.add(order);
+	    */
+		
+	
 	}
 	
 	public void itemSelected(Item item) //Item item

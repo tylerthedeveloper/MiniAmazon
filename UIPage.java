@@ -35,7 +35,7 @@ abstract class UIPage extends JPanel
     	for(Object item : list) {
     		if((Item)item instanceof Item) {
 	    		Item _item = (Item)item;
-	        	tempJP.add(new UIItem(_item));
+	        	tempJP.add(new UIItem(_item, false));
 	        }
         }
         
