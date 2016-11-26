@@ -1,7 +1,7 @@
 //package Userbase;
 import java.util.ArrayList;
 
-public class Seller extends User implements InventoryInterface
+public class Seller extends User
 {
 
     private ArrayList<Item> items;
@@ -20,7 +20,8 @@ public class Seller extends User implements InventoryInterface
     }
 
     public ArrayList<Item> seeInventory() {
-		throw new UnsupportedOperationException();
+	//throw new UnsupportedOperationException();
+	return this.items;
     }
 
     public boolean shipItem(Item item, Buyer buyer) {
@@ -31,7 +32,7 @@ public class Seller extends User implements InventoryInterface
 		throw new UnsupportedOperationException();
     }
 
-
+    /*
     public Item viewItem(Item item) {
 	return item;
     }
@@ -41,8 +42,7 @@ public class Seller extends User implements InventoryInterface
 	for (int i = 0; i < items.size(); i++) {
 	    if (items.get(i).equals(item)) {
 		
-		if (_itemID != null) {
-		
+		if (_itemID != null) {	
 		    item.setItemId(_itemID);
 		}
 
@@ -88,5 +88,6 @@ public class Seller extends User implements InventoryInterface
 		break;
 	}
     }
+    */
     
 }

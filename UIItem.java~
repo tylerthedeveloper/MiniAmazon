@@ -84,23 +84,23 @@ public class UIItem extends JPanel
 	
 	public UIItem(Item item, boolean b)
 	{
-	    super();
-	    final Item _item = item;
+		super();
+		final Item _item = item;
 	    JLabel itemID = new JLabel(item.getItemID());
 	    JLabel productName = new JLabel(item.getName());
 	    JLabel category = new JLabel(item.getCategory().toString());
 	    JLabel description = new JLabel(item.getDescription());
 	    JLabel price = new JLabel(Integer.toString(item.getPrice()));
-	    JLabel quantity = new JLabel(Integer.toString(item.getQuantity()));
+		JLabel quantity = new JLabel(Integer.toString(item.getQuantity()));
 	    JLabel onSale = new JLabel(String.valueOf(item.getSale()));
 	    JLabel sellerID = new JLabel(item.getSellerID());
 	    Integer value = new Integer(item.getQuantity());
-	    Integer min = new Integer(1);
-	    Integer max = new Integer(item.getQuantity());
-	    Integer step = new Integer(1);
-	    //final SpinnerNumberModel numModel = new SpinnerNumberModel(value, min, max, step);
-	    numModel = new SpinnerNumberModel(value, min, max, step);
-	    final JSpinner spinner = new JSpinner(numModel);
+		Integer min = new Integer(1);
+		Integer max = new Integer(item.getQuantity());
+		Integer step = new Integer(1);
+		//final SpinnerNumberModel numModel = new SpinnerNumberModel(value, min, max, step);
+		numModel = new SpinnerNumberModel(value, min, max, step);
+		final JSpinner spinner = new JSpinner(numModel);
 	    JButton order = new JButton("Order");
 	    order.addActionListener(new ActionListener() 
 		{		
@@ -131,17 +131,17 @@ public class UIItem extends JPanel
 	
 	public void itemSelected(Item item) //Item item
 	{
-	    UIItem itemSectionFull = new UIItem(true);
-	     Item _item = item;
+		UIItem itemSectionFull = new UIItem(true);
+		Item _item = item;
 	    JDialog jd = new JDialog();
 	    jd.setSize(new Dimension(500, 300));
-	    jd.setLocationRelativeTo(this);
-	    jd.setModal(true);
+        jd.setLocationRelativeTo(this);
+        jd.setModal(true);
 	    JPanel jdPan = new JPanel(true);
 	    jdPan.add(itemSectionFull);
 	    jdPan.add(new UIItem(_item, true));
 	    jd.add(jdPan);
-	    jd.setVisible(true);
+		jd.setVisible(true);
 	}
 		
 	public void add2Cart(Item item) //Item item
@@ -175,7 +175,7 @@ public class UIItem extends JPanel
 	
 	public static void stockOut(Item item)
 	{
-	    JPanel jdPan = new JPanel(true);
+		JPanel jdPan = new JPanel(true);
 	    JLabel title = new JLabel("Stockout");
 	    JLabel itemName = new JLabel(item.getName());
 	    JLabel message  = new JLabel("we are sorry, but that item is out of stock. \n " + 
@@ -186,8 +186,8 @@ public class UIItem extends JPanel
 	    jdPan.add(message);
 	    JDialog jd = new JDialog();
 	    jd.setSize(new Dimension(500, 300));
-	    jd.setModal(true);
+        jd.setModal(true);
 	    jd.add(jdPan);
-	    jd.setVisible(true);
+		jd.setVisible(true);
 	}
 }
