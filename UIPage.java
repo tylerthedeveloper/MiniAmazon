@@ -42,6 +42,8 @@ abstract class UIPage extends JPanel
 		this.remove(jList);
 	    jList = tempJP;
         this.add(jList);
+        App.Window.revalidate();
+        App.Window.repaint();
     }
     
 }

@@ -10,7 +10,6 @@ public class BuyerPage extends UIPage
 
 	public static int shopCount;
 	public static JLabel shopCounter;
-	//JPanel jList;
 	
     public BuyerPage()
     {
