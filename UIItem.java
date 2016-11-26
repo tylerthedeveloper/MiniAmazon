@@ -4,27 +4,48 @@ import javax.swing.*;
 
 public class UIItem extends JPanel
 {
+	JLabel itemID; // = new JLabel("ItemID");
+	JLabel productName; // = new JLabel("Name");
+	JLabel category; // = new JLabel("Category");
+	JLabel description; // = new JLabel("Description");
+	JLabel price; // = new JLabel("Price");
+	JLabel quantity; // = new JLabel("Quantity");
+	JLabel onSale; // = new JLabel("Sale?");
+	JLabel sellerID; // = new JLabel("SellerID");
+	JLabel view; //
+	JLabel orderLabel; // = new JLabel("Order");
+
 	//section headers
+	/*
 	public UIItem()
 	{
 		super();		
-	    JLabel itemID = new JLabel("ItemID");
-	    JLabel productName = new JLabel("Name");
-	    JLabel category = new JLabel("Category");
-	    JLabel price = new JLabel("Price");
-	    JLabel onSale = new JLabel("Sale?");
-	    JLabel view = new JLabel("View");
+	    /*
+	    itemID = new JLabel("ItemID");
+	 	productName = new JLabel("Name");
+	    category = new JLabel("Category");
+	    price = new JLabel("Price");
+	    onSale = new JLabel("Sale?");
+	    view = new JLabel("View");
 	    this.add(itemID);
 	    this.add(productName);
 	    this.add(category);
 	    this.add(price);
 	    this.add(onSale);
-	    this.add(view);
+	    
+	    this.add(new JLabel("ItemID"));
+	    this.add(new JLabel("Name"));
+	    this.add(new JLabel("Category"));
+	    this.add(new JLabel("Price"));
+	    this.add(new JLabel("Sale?"));
+	    this.add(new JLabel("View"));
 	}
+	*/
 	
 	public UIItem(boolean b)
 	{
 		super();		
+		/*
 	    JLabel itemID = new JLabel("ItemID");
 	    JLabel productName = new JLabel("Name");
 	    JLabel category = new JLabel("Category");
@@ -33,7 +54,7 @@ public class UIItem extends JPanel
 	    JLabel quantity = new JLabel("Quantity");
 	    JLabel onSale = new JLabel("Sale?");
 	    JLabel sellerID = new JLabel("SellerID");
-	    JLabel order = new JLabel("Order");
+		JLabel orderLabel = new JLabel("Order");
 	    this.add(itemID);
 	    this.add(productName);
 	    this.add(category);
@@ -42,7 +63,24 @@ public class UIItem extends JPanel
 	    this.add(quantity);
 	    this.add(onSale);
 	    this.add(sellerID);
-	    this.add(order);
+	    this.add(orderLabel);
+	    */
+		this.add(new JLabel("ItemID"));
+		this.add(new JLabel("Name"));
+		this.add(new JLabel("Category"));
+		this.add(new JLabel("Price"));
+		this.add(new JLabel("Sale?"));
+
+	    if(!b) {			
+			this.add(new JLabel("View"));
+		}
+		else {
+			this.add(new JLabel("Description"));
+			this.add(new JLabel("Quantity"));
+			this.add(new JLabel("SellerID"));
+			this.add(new JLabel("Order"));
+		}
+
 	}
 	
 	//item in list
@@ -82,7 +120,7 @@ public class UIItem extends JPanel
 	
 	static SpinnerNumberModel numModel; 
 	static JButton order;
-	static JLabel quantity;
+	//static JLabel quantity;
 	public UIItem(Item item, boolean b)
 	{
 		super();
@@ -160,13 +198,6 @@ public class UIItem extends JPanel
 	{
 		return (item.getQuantity() > 0);
 	}
-	/*
-	public static boolean enoughStock(Item item, int amountToOrder)
-	{
-		return (item.getQuantity() >= amountToOrder);
-	}
-	*/
-
 
 	public void orderItem(Item item, int amountToOrder)
 	{

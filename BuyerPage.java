@@ -46,7 +46,7 @@ public class BuyerPage extends UIPage
 		});
         int cartCount = (int)((Buyer)App.User).ShoppingCart.getCount()+shopCount;
         shopCounter = new JLabel(String.valueOf(cartCount));
-        UIItem itemSectionShort = new UIItem();
+        UIItem itemSectionShort = new UIItem(false);
         this.add(productList);
         this.add(searchProducts);
         this.add(viewCategories);
