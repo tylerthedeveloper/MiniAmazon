@@ -244,14 +244,13 @@ public class UIItem extends JPanel
 	public void itemSelected(Item item) 
 	{
 		UIItem itemSectionFull = new UIItem(true);
-		Item _item = item;
-	    JDialog jd = new JDialog();
+	    JPanel jdPan = new JPanel(true);
+	    jdPan.add(itemSectionFull);
+	    jdPan.add(new UIItem(item, true));
+		JDialog jd = new JDialog();
 	    jd.setSize(new Dimension(500, 300));
         jd.setLocationRelativeTo(this);
         jd.setModal(true);
-	    JPanel jdPan = new JPanel(true);
-	    jdPan.add(itemSectionFull);
-	    jdPan.add(new UIItem(_item, true));
 	    jd.add(jdPan);
 		jd.setVisible(true);
 	}
@@ -264,26 +263,18 @@ public class UIItem extends JPanel
 		}
 	}
 	
-
 	public void orderItem(Item item, int amountToOrder)
 	{
-		System.out.println("in order");
 		App.InvRepo.processOrder(item, amountToOrder);
-		updateItemCount(item);
-		if(!item.inStock()) order.setText("Out-of-stock");
-	}
-
-
-	public void updateItemCount(Item item)
-	{
 		quantity.setText(String.valueOf(item.getQuantity()));
 		numModel.setValue(0);
+		if(!item.inStock()) order.setText("Out-of-stock");
 	}
 	
 	public void underStock(Item item)
 	{
 		ArrayList<JComponent> arr = new ArrayList<JComponent>();
-	    arr.add(new JLabel("Stockout for: "));
+	    arr.add(new JLabel("Understock for item named:  "));
 	    arr.add(new JLabel(item.getName() + ". "));
 	    arr.add(new JLabel("We are sorry, but we do not have that many in stock"));
 	    JPanel uiPan = new UIJPanel(arr);
@@ -300,7 +291,7 @@ public class UIItem extends JPanel
 	{
 		//order.setText("Out-of-stock");
 	    ArrayList<JComponent> arr = new ArrayList<JComponent>();
-	    arr.add(new JLabel("Understock for: "));
+	    arr.add(new JLabel("Stockout for item named: "));
 	    arr.add(new JLabel(item.getName() + ". "));
 	    arr.add(new JLabel("we are sorry, but that item is out of stock. "));
 	    arr.add(new JLabel("We will notify you when it returns "));	    					

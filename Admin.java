@@ -8,7 +8,7 @@ public class Admin extends User implements InventoryInterface
 	
     public Admin (String name, String pass, String email, Role role)
     {
-	super(name, pass, email, role);
+		super(name, pass, email, role);
     }
 
     public void generateReport() 

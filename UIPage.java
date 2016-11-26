@@ -44,7 +44,6 @@ abstract class UIPage extends JPanel
         this.add(tempJP);
         App.Window.revalidate();
         App.Window.repaint();
-    }
-    
+    }    
 }
 
