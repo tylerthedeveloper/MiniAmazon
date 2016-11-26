@@ -104,14 +104,17 @@ public class StartupHelper extends JDialog implements IStartupHelper
 		  		dispose();
 		  		User.Role role;
 
-		  		if(buyerButton.isSelected())
+		  		if(buyerButton.isSelected()) {
 			  		role = User.Role.Buyer;
+			  	}
 			  		
-			  	else if(sellerButton.isSelected())
+			  	else if(sellerButton.isSelected()) {
 			  		role = User.Role.Seller;
+			  	}
 			  		
-		  		else
+		  		else {
 			  		role = User.Role.Admin;		  		
+			  	}
 		  		
 		  		App.User = UserBaseClass.register(name.getText(), password.getText(), 
 								  					email.getText(), role);

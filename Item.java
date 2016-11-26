@@ -1,6 +1,6 @@
 //package src.InventoryRepo;
 
-public class Item
+public class Item extends Object
 {
 	String _itemID;
 	String _name;

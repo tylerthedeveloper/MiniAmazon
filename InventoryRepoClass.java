@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class InventoryRepoClass
 {
-	public static ArrayList<Item> MarketItemList;
-	public static ArrayList<Transaction> MarketTransactionList;
+	public ArrayList<Item> MarketItemList;
+	public ArrayList<Transaction> MarketTransactionList;
 	
 	public InventoryRepoClass() {
 		MarketItemList = new ArrayList<Item>();
@@ -34,5 +34,25 @@ public class InventoryRepoClass
 	public void addTransaction(Transaction transaction)
 	{
 		this.MarketTransactionList.add(transaction);		
+	}
+	
+	public Item searchForItem(String searchType, String textSearch) 
+	{
+		Item _item = new Item();
+		
+		if(searchType.equals("ID")) {			
+			for(Item item : this.MarketItemList) {
+				if(textSearch.equals(item.getItemID())) {
+					_item = item;
+				} 
+			}
+		} else { 
+			for(Item item : this.MarketItemList) {
+				if(textSearch.equals(item.getName())) {
+					_item = item;
+				} 
+			}		
+		}
+		return _item;
 	}
 }
