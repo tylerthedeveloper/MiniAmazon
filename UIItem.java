@@ -1,30 +1,67 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.ArrayList;
+
 
 public class UIItem extends JPanel
 {
+
+	/*
+	JLabel itemID; // = new JLabel("ItemID");
+	JLabel productName; // = new JLabel("Name");
+	JLabel category; // = new JLabel("Category");
+	JLabel description; // = new JLabel("Description");
+	JLabel price; // = new JLabel("Price");
+	JLabel quantity; // = new JLabel("Quantity");
+	JLabel onSale; // = new JLabel("Sale?");
+	JLabel sellerID; // = new JLabel("SellerID");
+	JLabel view; //
+	JLabel orderLabel; // = new JLabel("Order");
+
 	//section headers
+	
 	public UIItem()
 	{
-		super();		
+<<<<<<< HEAD
+	    super();		
 	    JLabel itemID = new JLabel("ItemID");
 	    JLabel productName = new JLabel("Name");
 	    JLabel category = new JLabel("Category");
 	    JLabel price = new JLabel("Price");
 	    JLabel onSale = new JLabel("Sale?");
 	    JLabel view = new JLabel("View");
+=======
+		super();		
+	    /*
+	    itemID = new JLabel("ItemID");
+	 	productName = new JLabel("Name");
+	    category = new JLabel("Category");
+	    price = new JLabel("Price");
+	    onSale = new JLabel("Sale?");
+	    view = new JLabel("View");
+>>>>>>> 345df57b6571ce0ed0198d6556cb4c1839448adc
 	    this.add(itemID);
 	    this.add(productName);
 	    this.add(category);
 	    this.add(price);
 	    this.add(onSale);
-	    this.add(view);
+	    
+	    this.add(new JLabel("ItemID"));
+	    this.add(new JLabel("Name"));
+	    this.add(new JLabel("Category"));
+	    this.add(new JLabel("Price"));
+	    this.add(new JLabel("Sale?"));
+	    this.add(new JLabel("View"));
 	}
+<<<<<<< HEAD
 	
 	public UIItem(boolean b)
 	{
-		super();		
+	    super();		
+=======
+			/*
+>>>>>>> 345df57b6571ce0ed0198d6556cb4c1839448adc
 	    JLabel itemID = new JLabel("ItemID");
 	    JLabel productName = new JLabel("Name");
 	    JLabel category = new JLabel("Category");
@@ -33,7 +70,7 @@ public class UIItem extends JPanel
 	    JLabel quantity = new JLabel("Quantity");
 	    JLabel onSale = new JLabel("Sale?");
 	    JLabel sellerID = new JLabel("SellerID");
-	    JLabel order = new JLabel("Order");
+		JLabel orderLabel = new JLabel("Order");
 	    this.add(itemID);
 	    this.add(productName);
 	    this.add(category);
@@ -42,50 +79,10 @@ public class UIItem extends JPanel
 	    this.add(quantity);
 	    this.add(onSale);
 	    this.add(sellerID);
-	    this.add(order);
-	}
+	    this.add(orderLabel);
 	
-	//item in list
-	public UIItem(Item item)
-	{
-		super();		
-	    final Item _item = item;
-	    JLabel itemID = new JLabel(item.getItemID());
-	    JLabel productName = new JLabel(item.getName());
-	    JLabel category = new JLabel(item.getCategory().toString());
-	    JLabel price = new JLabel(Integer.toString(item.getPrice()));
-	    JLabel onSale = new JLabel(String.valueOf(item.getSale()));
-	    JButton view = new JButton("View");
-	    view.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent e)
-		  	{
-				itemSelected(_item);
-		  	}
-		});
-	    JButton add2Cart = new JButton("Add2Cart");
-	    add2Cart.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent e)
-		  	{
-				add2Cart(_item);
-		  	}
-		});
-	    this.add(itemID);
-	    this.add(productName);
-	    this.add(category);
-	    this.add(price);
-	    this.add(onSale);
-	    this.add(view);
-	    this.add(add2Cart);
-	}
 	
-	static SpinnerNumberModel numModel; 
-	static JButton order;
-	static JLabel quantity;
-	public UIItem(Item item, boolean b)
-	{
-		super();
+			/*
 		final Item _item = item;
 	    JLabel itemID = new JLabel(item.getItemID());
 	    JLabel productName = new JLabel(item.getName());
@@ -95,6 +92,7 @@ public class UIItem extends JPanel
 		quantity = new JLabel(Integer.toString(item.getQuantity()));
 	    JLabel onSale = new JLabel(String.valueOf(item.getSale()));
 	    JLabel sellerID = new JLabel(item.getSellerID());
+	    
 	    Integer value = new Integer(item.getQuantity());
 		Integer min = new Integer(0);
 		Integer max = new Integer(item.getQuantity());
@@ -130,21 +128,186 @@ public class UIItem extends JPanel
 	    this.add(sellerID);
 	    this.add(spinner);
 	    this.add(order);
+	
+	
+	    
+	public UIItem(Item item)
+	{
+<<<<<<< HEAD
+	    super();		
+=======
+		super();		
+		
+>>>>>>> 345df57b6571ce0ed0198d6556cb4c1839448adc
+	    final Item _item = item;
+	    JLabel itemID = new JLabel(item.getItemID());
+	    JLabel productName = new JLabel(item.getName());
+	    JLabel category = new JLabel(item.getCategory().toString());
+	    JLabel price = new JLabel(Integer.toString(item.getPrice()));
+	    JLabel onSale = new JLabel(String.valueOf(item.getSale()));
+	    
+	    JButton view = new JButton("View");
+	    view.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e)
+		  	{
+				itemSelected(_item);
+		  	}
+		});
+	    JButton add2Cart = new JButton("Add2Cart");
+	    add2Cart.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e)
+		  	{
+				add2Cart(_item);
+		  	}
+		});
+	    this.add(itemID);
+	    this.add(productName);
+	    this.add(category);
+	    this.add(price);
+	    this.add(onSale);
+	    this.add(view);
+	    this.add(add2Cart);   
+	}
+	*/
+	
+	public UIItem(boolean b)
+	{
+		super();		
+		this.add(new JLabel("ItemID"));
+		this.add(new JLabel("Name"));
+		this.add(new JLabel("Category"));
+		this.add(new JLabel("Price"));
+		this.add(new JLabel("Sale?"));
+
+	    if(!b) {			
+			this.add(new JLabel("View"));
+		}
+		else {
+			this.add(new JLabel("Description"));
+			this.add(new JLabel("SellerID"));
+			this.add(new JLabel("Quantity"));
+			this.add(new JLabel("Order"));
+		}
+
 	}
 	
-	public void itemSelected(Item item) //Item item
+	static SpinnerNumberModel numModel; 
+	static JButton order;
+	static JLabel quantity;
+	
+	public UIItem(Item item, boolean b)
 	{
-		UIItem itemSectionFull = new UIItem(true);
-		Item _item = item;
+<<<<<<< HEAD
+	    super();
+	    final Item _item = item;
+	    JLabel itemID = new JLabel(item.getItemID());
+	    JLabel productName = new JLabel(item.getName());
+	    JLabel category = new JLabel(item.getCategory().toString());
+	    JLabel description = new JLabel(item.getDescription());
+	    JLabel price = new JLabel(Integer.toString(item.getPrice()));
+	    JLabel quantity = new JLabel(Integer.toString(item.getQuantity()));
+	    JLabel onSale = new JLabel(String.valueOf(item.getSale()));
+	    JLabel sellerID = new JLabel(item.getSellerID());
+	    Integer value = new Integer(item.getQuantity());
+	    Integer min = new Integer(1);
+	    Integer max = new Integer(item.getQuantity());
+	    Integer step = new Integer(1);
+	    //final SpinnerNumberModel numModel = new SpinnerNumberModel(value, min, max, step);
+	    numModel = new SpinnerNumberModel(value, min, max, step);
+	    final JSpinner spinner = new JSpinner(numModel);
+	    JButton order = new JButton("Order");
+	    order.addActionListener(new ActionListener() 
+		{		
+			public void actionPerformed(ActionEvent e)
+		  	{
+			  	int amountDesired = (int)spinner.getValue();
+				//System.out.println(spinner.getValue());
+				//System.out.println(numModel.getValue());
+				//System.out.println(amountDesired);
+				if(inStock(_item, amountDesired)) {
+					orderItem(_item, amountDesired);
+				} else {
+					stockOut(_item);
+=======
+		super();
+	    final Item _item = item;
+		this.add(new JLabel(item.getItemID()));
+		this.add(new JLabel(item.getName()));
+		this.add(new JLabel(item.getCategory().toString()));
+		this.add(new JLabel(Integer.toString(item.getPrice())));
+		this.add(new JLabel(String.valueOf(item.getSale())));
+		Integer value = new Integer(item.getQuantity());
+		Integer min = new Integer(0);
+		Integer max = new Integer(item.getQuantity());
+		Integer step = new Integer(1);
+		numModel = new SpinnerNumberModel(value, min, max, step);
+		final JSpinner spinner = new JSpinner(numModel);
+		
+	    if(!b) {			
+		    JButton view = new JButton("View");
+			view.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					itemSelected(_item);
+>>>>>>> 345df57b6571ce0ed0198d6556cb4c1839448adc
+				}
+			});
+			JButton add2Cart = new JButton("Add2Cart");
+			add2Cart.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					add2Cart(_item);
+				}
+			});
+			this.add(view);
+			this.add(add2Cart);
+		}
+		else {
+			this.add(new JLabel(item.getDescription()));
+			if(_item.inStock()) { 
+					order = new JButton("Order");
+			} else {
+				order = new JButton("Out-Of-Stock");
+			}
+			order.addActionListener(new ActionListener() 
+			{		
+				public void actionPerformed(ActionEvent e)
+				{
+					int amountDesired = (int)spinner.getValue();
+					if(_item.getQuantity() >= amountDesired && _item.inStock()) {
+						orderItem(_item, amountDesired);
+					} else if(_item.inStock()) {
+						underStock(_item);
+					} else {
+						stockOut(_item);
+					}
+				}
+			});
+			quantity = new JLabel(Integer.toString(item.getQuantity()));
+			this.add(new JLabel(item.getSellerID()));
+			this.add(quantity);
+			this.add(spinner);
+			this.add(order);
+		}
+	}
+	
+	public void itemSelected(Item item) 
+	{
+	    UIItem itemSectionFull = new UIItem(true);
+	     Item _item = item;
 	    JDialog jd = new JDialog();
 	    jd.setSize(new Dimension(500, 300));
-        jd.setLocationRelativeTo(this);
-        jd.setModal(true);
+	    jd.setLocationRelativeTo(this);
+	    jd.setModal(true);
 	    JPanel jdPan = new JPanel(true);
 	    jdPan.add(itemSectionFull);
 	    jdPan.add(new UIItem(_item, true));
 	    jd.add(jdPan);
-		jd.setVisible(true);
+	    jd.setVisible(true);
 	}
 		
 	public void add2Cart(Item item) //Item item
@@ -155,25 +318,13 @@ public class UIItem extends JPanel
 		}
 	}
 	
-	
-	public static boolean inStock(Item item)
-	{
-		return (item.getQuantity() > 0);
-	}
-	/*
-	public static boolean enoughStock(Item item, int amountToOrder)
-	{
-		return (item.getQuantity() >= amountToOrder);
-	}
-	*/
-
 
 	public void orderItem(Item item, int amountToOrder)
 	{
 		System.out.println("in order");
 		App.InvRepo.processOrder(item, amountToOrder);
 		updateItemCount(item);
-		if(!inStock(item)) order.setText("Out-of-stock");
+		if(!item.inStock()) order.setText("Out-of-stock");
 	}
 
 
@@ -183,28 +334,26 @@ public class UIItem extends JPanel
 		numModel.setValue(0);
 	}
 	
-	public static void underStock(Item item)
+	public void underStock(Item item)
 	{
-		//order.setText("Out-of-stock");
-		JPanel jdPan = new JPanel(true);
-	    JLabel title = new JLabel("Stockout");
-	    JLabel itemName = new JLabel(item.getName());
-	    JLabel message  = new JLabel("we are sorry, but we do not have that many in stock");
-	    jdPan.add(title);
-	    jdPan.add(itemName);
-	    jdPan.add(message);
+		ArrayList<JComponent> arr = new ArrayList<JComponent>();
+	    arr.add(new JLabel("Stockout for: "));
+	    arr.add(new JLabel(item.getName() + ". "));
+	    arr.add(new JLabel("We are sorry, but we do not have that many in stock"));
+	    JPanel uiPan = new UIJPanel(arr);
 	    JDialog jd = new JDialog();
 	    jd.setSize(new Dimension(500, 300));
         jd.setModal(true);
-	    jd.add(jdPan);
+	    jd.add(uiPan);
+		jd.setLocationRelativeTo(this);		
 		jd.setVisible(true);
 	}
 
 	
-	public static void stockOut(Item item)
+	public void stockOut(Item item)
 	{
-		//order.setText("Out-of-stock");
-		JPanel jdPan = new JPanel(true);
+<<<<<<< HEAD
+	    JPanel jdPan = new JPanel(true);
 	    JLabel title = new JLabel("Stockout");
 	    JLabel itemName = new JLabel(item.getName());
 	    JLabel message  = new JLabel("we are sorry, but that item is out of stock. \n " + 
@@ -215,8 +364,25 @@ public class UIItem extends JPanel
 	    jdPan.add(message);
 	    JDialog jd = new JDialog();
 	    jd.setSize(new Dimension(500, 300));
-        jd.setModal(true);
+	    jd.setModal(true);
 	    jd.add(jdPan);
+	    jd.setVisible(true);
+=======
+		//order.setText("Out-of-stock");
+	    ArrayList<JComponent> arr = new ArrayList<JComponent>();
+	    arr.add(new JLabel("Understock for: "));
+	    arr.add(new JLabel(item.getName() + ". "));
+	    arr.add(new JLabel("we are sorry, but that item is out of stock. "));
+	    arr.add(new JLabel("We will notify you when it returns "));	    					
+	    JPanel uiPan = new UIJPanel(arr);
+	    JDialog jd = new JDialog();
+	    jd.setSize(new Dimension(500, 300));
+        jd.setLocationRelativeTo(this);
+        jd.setModal(true);
+	    jd.add(uiPan);
 		jd.setVisible(true);
+>>>>>>> 345df57b6571ce0ed0198d6556cb4c1839448adc
 	}
+	
+	
 }

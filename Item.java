@@ -90,6 +90,11 @@ public class Item
 		_quantity-=quant;
 	}
 	
+	public boolean inStock()
+	{
+		return (this.getQuantity() > 0);
+	}
+	
 	public void setSale(boolean onSale) {
 		_onSale = onSale;
 	}
