@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.ImageIcon;
+import java.util.ArrayList;
 
 
 public class BuyerPage extends UIPage
@@ -15,6 +16,14 @@ public class BuyerPage extends UIPage
 		super();		
 		//setting frame specifics
         JButton productList = new JButton("View Products");
+        jList = new JPanel();
+		productList.addActionListener(new ActionListener() 
+		{		
+			public void actionPerformed(ActionEvent e)
+		  	{
+				fillList(App.InvRepo.MarketItemList);		  	
+			}
+		});        
         JButton searchProducts = new JButton("Search Products");
         JButton viewCategories = new JButton("View Categories");
         ImageIcon icon = new ImageIcon("cart.png");
@@ -37,9 +46,7 @@ public class BuyerPage extends UIPage
 		});
         int cartCount = (int)((Buyer)App.User).ShoppingCart.getCount()+shopCount;
         shopCounter = new JLabel(String.valueOf(cartCount));
-        UIItem itemSectionShort = new UIItem();
-        Item item = new Item("itemID", "name", Item.Category.Electronics, "description", 50, 50, true, "sellerID");
-        UIItem item1 = new UIItem(item);
+        UIItem itemSectionShort = new UIItem(false);
         this.add(productList);
         this.add(searchProducts);
         this.add(viewCategories);
@@ -47,9 +54,7 @@ public class BuyerPage extends UIPage
         this.add(shopCounter);
         this.add(personIcon);
         this.add(itemSectionShort);
-        this.add(item1);
-    }	
-    
+    }
     
     public void viewShoppingCart() //Item item
 	{
@@ -66,32 +71,10 @@ public class BuyerPage extends UIPage
 	    jd.add(jdPan);
 		jd.setVisible(true);
 	}
-
-	public void viewProfile()
-	{
-		JPanel jdPan = new JPanel(true);
-	    JLabel userID = new JLabel("UserID");
-	    JLabel name = new JLabel("Name");
-	    JLabel email = new JLabel("Email");
-	    JLabel role = new JLabel("Role");
-	    jdPan.add(userID);
-	    jdPan.add(name);
-	    jdPan.add(email);	    
-	    jdPan.add(role);
-	    jdPan.add(App.User.showProfile());
-	    JDialog jd = new JDialog();
-	    jd.setSize(new Dimension(500, 300));
-        jd.setModal(true);
-	    jd.add(jdPan);
-		//System.out.print(App.User.toString());
-		//JPanel profile = App.User.showProfile();
-		//jd.add(profile);
-		jd.setLocationRelativeTo(this);
-		jd.setVisible(true);
-	}
 	
 	public static void updateCart()
 	{
 		shopCounter.setText(String.valueOf(((Buyer)App.User).ShoppingCart.getCount()));
 	}
+
 }

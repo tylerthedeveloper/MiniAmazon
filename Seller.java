@@ -1,17 +1,23 @@
 //package Userbase;
 import java.util.ArrayList;
 
+<<<<<<< HEAD
 public class Seller extends User
+=======
+public class Seller extends User //implements InventoryInterface
+>>>>>>> 345df57b6571ce0ed0198d6556cb4c1839448adc
 {
 
-    private ArrayList<Item> items;
+    private ArrayList<Item> _items;
 
     public Seller () {}
 		
     public Seller(String name, String pass, String email, Role role)
     {
 		super(name, pass, email, role);
-		items = new ArrayList<Item>();
+		_items = new ArrayList<Item>();
+		addItem(new Item("itemID", "name", Item.Category.Electronics, "description", 50, 50, true, "sellerID"));
+        addItem(new Item("seller", "seller", Item.Category.Electronics, "description2", 50, 50, true, "sellerID2"));
 
     }
 
@@ -19,9 +25,14 @@ public class Seller extends User
 		throw new UnsupportedOperationException();
     }
 
+<<<<<<< HEAD
     public ArrayList<Item> seeInventory() {
 	//throw new UnsupportedOperationException();
 	return this.items;
+=======
+    public ArrayList<Item> seeMyInventory() {
+		return this._items;
+>>>>>>> 345df57b6571ce0ed0198d6556cb4c1839448adc
     }
 
     public boolean shipItem(Item item, Buyer buyer) {
@@ -34,13 +45,15 @@ public class Seller extends User
 
     /*
     public Item viewItem(Item item) {
-	return item;
+		return item;
     }
 
-    public void editItem(Item item, String _itemID, String _name, Category _category, String _description, int _price, int _quantity, boolean _onSale) {
+	/*
+    public void editItem(Item item, String _itemID, String _name, Category _category, 
+    					String _description, int _price, int _quantity, boolean _onSale) {
 	
-	for (int i = 0; i < items.size(); i++) {
-	    if (items.get(i).equals(item)) {
+	for (int i = 0; i < _items.size(); i++) {
+	    if (_items.get(i).equals(item)) {
 		
 		if (_itemID != null) {	
 		    item.setItemId(_itemID);
@@ -73,21 +86,27 @@ public class Seller extends User
 
 	    break;
 
-	}
+		}
 
     }
+	*/
 
     public void addItem(Item item) {
-	this.items.add(item);
+		this._items.add(item);
     }
 
     public void deleteItem(Item item) {
-	for (int i = 0; i < items.size(); i++) {
-	    if (items.get(i).equals(item)) {
-		items.remove(item);
-		break;
+		for (int i = 0; i < _items.size(); i++) {
+			if (_items.get(i).equals(item)) {
+				_items.remove(item);
+				break;
+			}
+    	}
 	}
+<<<<<<< HEAD
     }
     */
     
+=======
+>>>>>>> 345df57b6571ce0ed0198d6556cb4c1839448adc
 }

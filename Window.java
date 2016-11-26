@@ -8,12 +8,6 @@ public class Window extends JFrame
 	//class member instance variables
 	public final int FRAME_WIDTH = 800;
 	public final int FRAME_HEIGHT = 800;	
-
-	//helper to aggregate and organize UI elements and dialogs
-	StartupHelper SUPHelper = new StartupHelper();
-	
-	//check onstart
-	static boolean onStart = true;
 	
 	//constructor
 	public Window() 
@@ -26,13 +20,6 @@ public class Window extends JFrame
 		this.setTitle("Marketplace");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(this);
-        
-        //setting initialDialog on startup only
-		if(onStart) {
-			JDialog initialDialog = SUPHelper.Initial();
-			initialDialog.setVisible(true);
-			onStart = false;
-		}
 	}
 }
 
