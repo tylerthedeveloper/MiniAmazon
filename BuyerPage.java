@@ -10,7 +10,7 @@ public class BuyerPage extends UIPage
 
 	public static int shopCount;
 	public static JLabel shopCounter;
-	JPanel jList;
+	//JPanel jList;
 	
     public BuyerPage()
     {
@@ -77,19 +77,5 @@ public class BuyerPage extends UIPage
 	{
 		shopCounter.setText(String.valueOf(((Buyer)App.User).ShoppingCart.getCount()));
 	}
-	
-	public void fillList(ArrayList<Item> list) 
-	{
-		JPanel tempJP = new JPanel();
-    	for(Item item : list) {
-        	tempJP.add(new UIItem(item));
-        }
-        
-		this.remove(jList);
-	    jList = tempJP;
-        this.add(jList);
-        App.Window.revalidate();
 
-
-    }
 }

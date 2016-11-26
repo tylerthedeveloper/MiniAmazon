@@ -1,10 +1,12 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.ArrayList;
 
 abstract class UIPage extends JPanel 
 {
-
+	JPanel jList;	
+	
 	public UIPage() {}
 	
 	public void viewProfile()
@@ -26,4 +28,21 @@ abstract class UIPage extends JPanel
 		jd.setLocationRelativeTo(this);
 		jd.setVisible(true);
 	}
+	
+	public void fillList(ArrayList<?> list) 
+	{
+		JPanel tempJP = new JPanel();
+    	for(Object item : list) {
+    		if((Item)item instanceof Item) {
+	    		Item _item = (Item)item;
+	        	tempJP.add(new UIItem(_item));
+	        }
+        }
+        
+		this.remove(jList);
+	    jList = tempJP;
+        this.add(jList);
+    }
+    
 }
+
