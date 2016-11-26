@@ -243,6 +243,71 @@ public class UIItem extends JPanel
 		}
 	}
 	
+	public UIItem(Item item, boolean b, boolean c)
+	{
+		super();
+	    final Item _item = item;
+		this.add(new JLabel(item.getItemID()));
+		this.add(new JLabel(item.getName()));
+		this.add(new JLabel(item.getCategory().toString()));
+		this.add(new JLabel(Integer.toString(item.getPrice())));
+		this.add(new JLabel(String.valueOf(item.getSale())));
+		Integer value = new Integer(item.getQuantity());
+		Integer min = new Integer(0);
+		Integer max = new Integer(item.getQuantity());
+		Integer step = new Integer(1);
+		numModel = new SpinnerNumberModel(value, min, max, step);
+		final JSpinner spinner = new JSpinner(numModel);
+		
+	    if(!b) {			
+		    JButton view = new JButton("View");
+			view.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					itemSelected(_item);
+				}
+			});
+			JButton add2Cart = new JButton("Add2Cart");
+			add2Cart.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					add2Cart(_item);
+				}
+			});
+			this.add(view);
+			this.add(add2Cart);
+		}
+		else {
+			this.add(new JLabel(item.getDescription()));
+			if(_item.inStock()) { 
+					order = new JButton("Order");
+			} else {
+				order = new JButton("Out-Of-Stock");
+			}
+			order.addActionListener(new ActionListener() 
+			{		
+				public void actionPerformed(ActionEvent e)
+				{
+					int amountDesired = (int)spinner.getValue();
+					if(_item.getQuantity() >= amountDesired && _item.inStock()) {
+						orderItem(_item, amountDesired);
+					} else if(_item.inStock()) {
+						underStock(_item);
+					} else {
+						stockOut(_item);
+					}
+				}
+			});
+			quantity = new JLabel(Integer.toString(item.getQuantity()));
+			this.add(new JLabel(item.getSellerID()));
+			this.add(quantity);
+			this.add(spinner);
+			this.add(order);
+		}
+	}
+	
 	public void itemSelected(Item item) 
 	{
 		UIItem itemSectionFull = new UIItem(true);
