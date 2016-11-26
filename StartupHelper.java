@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.Checkbox;
 import java.awt.CheckboxGroup;
 
-public class StartupHelper extends JDialog
+public class StartupHelper extends JDialog implements IStartupHelper
 {
 	//constructor
 	public StartupHelper() {}
