@@ -1,11 +1,7 @@
 //package Userbase;
 import java.util.ArrayList;
 
-<<<<<<< HEAD
-public class Seller extends User
-=======
 public class Seller extends User //implements InventoryInterface
->>>>>>> 345df57b6571ce0ed0198d6556cb4c1839448adc
 {
 
     private ArrayList<Item> _items;
@@ -25,15 +21,9 @@ public class Seller extends User //implements InventoryInterface
 		throw new UnsupportedOperationException();
     }
 
-<<<<<<< HEAD
     public ArrayList<Item> seeInventory() {
-	//throw new UnsupportedOperationException();
-	return this.items;
-=======
-    public ArrayList<Item> seeMyInventory() {
 		return this._items;
->>>>>>> 345df57b6571ce0ed0198d6556cb4c1839448adc
-    }
+	}
 
     public boolean shipItem(Item item, Buyer buyer) {
 		throw new UnsupportedOperationException();
@@ -103,10 +93,6 @@ public class Seller extends User //implements InventoryInterface
 			}
     	}
 	}
-<<<<<<< HEAD
-    }
-    */
     
-=======
->>>>>>> 345df57b6571ce0ed0198d6556cb4c1839448adc
+   
 }

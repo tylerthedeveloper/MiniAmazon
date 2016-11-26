@@ -85,4 +85,3 @@ public class SellerPage extends UIPage
     }
         
 }
->>>>>>> 345df57b6571ce0ed0198d6556cb4c1839448adc

@@ -29,9 +29,9 @@ public class Admin extends User
 		
 		ArrayList<Item> sItems = new ArrayList<Item>();
 	
-		for (Item item : App.InventoryRepoClass.MarketItemList) {
+		for (Item item : App.InvRepo.MarketItemList) {
 		
-			if (item.getSellerID.equals(s.getUserID)) {
+			if (item.getSellerID().equals(s.getUserID())) {
 				sItems.add(item);
 			}
 		}
@@ -43,7 +43,8 @@ public class Admin extends User
 	    throw new UnsupportedOperationException();
     }
     
-	public void editItem(Item item, String _itemID, String _name, Category _category, String _description, int _price, int _quantity, boolean _onSale) {
+    /*
+	public void editItem(Item item, String _itemID, String _name, Item.Category _category, String _description, int _price, int _quantity, boolean _onSale) {
 	
 		for (int i = 0; i < items.size(); i++) {
 	    	if (items.get(i).equals(item)) {
@@ -85,7 +86,7 @@ public class Admin extends User
     public void editBuyer(Buyer b, String name, String pass, String email) {
     	for (User user: App.UserBaseClass) {
     	
-    		if (user istanceof Buyer) {
+    		if (user instanceof Buyer) {
     			current = ((Buyer)user);
     			if(current.equals(b)) {
     				
@@ -109,7 +110,7 @@ public class Admin extends User
     public void editSeller(Seller s, String name, String pass, String email) {
     	for (User user: App.UserBaseClass.UserList) {
     	
-    		if (user istanceof Seller) {
+    		if (user instanceof Seller) {
     			current = ((Seller)user);
     			if(current.equals(s)) {
     				
@@ -129,5 +130,6 @@ public class Admin extends User
     		}
     	}
     }
+    */
 	
 }

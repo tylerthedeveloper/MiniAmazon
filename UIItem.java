@@ -151,6 +151,7 @@ public class UIItem extends JPanel
 	}
 	*/
 	
+	//item section headers
 	public UIItem(boolean b)
 	{
 		super();		
@@ -176,6 +177,7 @@ public class UIItem extends JPanel
 	static JButton order;
 	static JLabel quantity;
 	
+	//item information
 	public UIItem(Item item, boolean b)
 	{
 		super();
