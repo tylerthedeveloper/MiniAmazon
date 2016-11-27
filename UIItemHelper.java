@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class UIItemHelper //extends UIDialog
+public class UIItemHelper
 {
 	
 	public static void itemSelected(Item item) 
@@ -23,15 +23,15 @@ public class UIItemHelper //extends UIDialog
 		}
 	}
 	
-	/*
-	public void orderItem(Item item, int amountToOrder)
+	
+	public void orderItem(UIItem uitem, Item item, int amountToOrder)
 	{
 		App.InvRepo.processOrder(item, amountToOrder);
-		quantity.setText(String.valueOf(item.getQuantity()));
-		numModel.setValue(0);
-		if(!item.inStock()) order.setText("Out-of-stock");
+		uitem.quantity.setText(String.valueOf(item.getQuantity()));
+		uitem.numModel.setValue(0);
+		if(!item.inStock()) uitem.order.setText("Out-of-stock");
 	}
-	*/
+	
 	
 	public static void underStock(Item item)
 	{
