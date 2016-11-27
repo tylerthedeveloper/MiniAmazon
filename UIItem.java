@@ -84,9 +84,14 @@ public class UIItem extends JPanel
 			{		
 				public void actionPerformed(ActionEvent e)
 				{
+				//uiItemHelper.orderItem(((UIItem)e.getSource()).getTopLevelAncestor()
+				//JButton button = (JButton)e.getSource();
+				//JPanel parent = button.getParent();
+
+					System.out.print((JButton)e.getSource().getParent());
 					int amountDesired = (int)spinner.getValue();
 					if(_item.getQuantity() >= amountDesired && _item.inStock()) {
-						uiItemHelper.orderItem((UIItem)e.getSource(), _item, amountDesired);
+						orderItem(_item, amountDesired);
 					} else if(_item.inStock()) {
 						uiItemHelper.underStock(_item);
 					} else {
@@ -149,9 +154,11 @@ public class UIItem extends JPanel
 			{		
 				public void actionPerformed(ActionEvent e)
 				{
+				//uiItemHelper.orderItem(((UIItem)e.getSource()).getTopLevelAncestor()
+					System.out.print(e.getSource());
 					int amountDesired = (int)spinner.getValue();
 					if(_item.getQuantity() >= amountDesired && _item.inStock()) {
-						uiItemHelper.orderItem(((UIItem)e.getSource()).getTopLevelAncestor(), _item, amountDesired);
+						orderItem(_item, amountDesired);
 					} else if(_item.inStock()) {
 						uiItemHelper.underStock(_item);
 					} else {
@@ -167,7 +174,7 @@ public class UIItem extends JPanel
 		}
 	}
 	
-	/*
+	
 	public void orderItem(Item item, int amountToOrder)
 	{
 		App.InvRepo.processOrder(item, amountToOrder);
@@ -175,7 +182,7 @@ public class UIItem extends JPanel
 		numModel.setValue(0);
 		if(!item.inStock()) order.setText("Out-of-stock");
 	}
-	*/
+	
 	
 	/*
 		public void itemSelected(Item item) 
