@@ -7,11 +7,13 @@ import java.awt.CheckboxGroup;
 public class UIDialog extends JDialog
 {
 	
-	public UIDialog ()//ArrayList<JComponent> elements = null
+	public UIDialog (JPanel jp)
 	{
         JDialog uiDialog = new JDialog(this);
 		uiDialog.setSize(new Dimension(500, 300));
         uiDialog.setModal(true);
-		uiDialog.setLocationRelativeTo(this);		
+		uiDialog.setLocationRelativeTo(App.Window);		
+		uiDialog.add(jp);
+		uiDialog.setVisible(true);
 	}
 }

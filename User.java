@@ -92,12 +92,6 @@ abstract class User
 	    jdPan.add(email);	    
 	    jdPan.add(role);
 	    jdPan.add(edit);
-	 	/*
-	 	JDialog jd = new JDialog();
-	    jd.setSize(new Dimension(500, 300));
-        jd.setModal(true);
-	    jd.add(jdPan);
-	    */
 		return jdPan;
 	}
 	

@@ -151,6 +151,8 @@ public class UIItem extends JPanel
 	}
 	*/
 	
+	UIItemHelper uiItemHelper = new UIItemHelper();
+	
 	//item section headers
 	public UIItem(boolean b)
 	{
@@ -200,7 +202,7 @@ public class UIItem extends JPanel
 			{
 				public void actionPerformed(ActionEvent e)
 				{
-					itemSelected(_item);
+					uiItemHelper.itemSelected(_item);
 				}
 			});
 			JButton add2Cart = new JButton("Add2Cart");
@@ -208,7 +210,7 @@ public class UIItem extends JPanel
 			{
 				public void actionPerformed(ActionEvent e)
 				{
-					add2Cart(_item);
+					uiItemHelper.add2Cart(_item);
 				}
 			});
 			this.add(view);
@@ -229,9 +231,9 @@ public class UIItem extends JPanel
 					if(_item.getQuantity() >= amountDesired && _item.inStock()) {
 						orderItem(_item, amountDesired);
 					} else if(_item.inStock()) {
-						underStock(_item);
+						uiItemHelper.underStock(_item);
 					} else {
-						stockOut(_item);
+						uiItemHelper.stockOut(_item);
 					}
 				}
 			});
@@ -265,7 +267,7 @@ public class UIItem extends JPanel
 			{
 				public void actionPerformed(ActionEvent e)
 				{
-					itemSelected(_item);
+					uiItemHelper.itemSelected(_item);
 				}
 			});
 			JButton add2Cart = new JButton("Add2Cart");
@@ -273,7 +275,7 @@ public class UIItem extends JPanel
 			{
 				public void actionPerformed(ActionEvent e)
 				{
-					add2Cart(_item);
+					uiItemHelper.add2Cart(_item);
 				}
 			});
 			this.add(view);
@@ -294,9 +296,9 @@ public class UIItem extends JPanel
 					if(_item.getQuantity() >= amountDesired && _item.inStock()) {
 						orderItem(_item, amountDesired);
 					} else if(_item.inStock()) {
-						underStock(_item);
+						uiItemHelper.underStock(_item);
 					} else {
-						stockOut(_item);
+						uiItemHelper.stockOut(_item);
 					}
 				}
 			});
@@ -308,7 +310,17 @@ public class UIItem extends JPanel
 		}
 	}
 	
-	public void itemSelected(Item item) 
+		
+	public void orderItem(Item item, int amountToOrder)
+	{
+		App.InvRepo.processOrder(item, amountToOrder);
+		quantity.setText(String.valueOf(item.getQuantity()));
+		numModel.setValue(0);
+		if(!item.inStock()) order.setText("Out-of-stock");
+	}
+	
+	/*
+		public void itemSelected(Item item) 
 	{
 		UIItem itemSectionFull = new UIItem(true);
 	    JPanel jdPan = new JPanel(true);
@@ -321,7 +333,8 @@ public class UIItem extends JPanel
 	    jd.add(jdPan);
 		jd.setVisible(true);
 	}
-		
+
+
 	public void add2Cart(Item item) //Item item
 	{
 		if(App.User instanceof Buyer) {
@@ -329,15 +342,8 @@ public class UIItem extends JPanel
 			BuyerPage.updateCart();
 		}
 	}
-	
-	public void orderItem(Item item, int amountToOrder)
-	{
-		App.InvRepo.processOrder(item, amountToOrder);
-		quantity.setText(String.valueOf(item.getQuantity()));
-		numModel.setValue(0);
-		if(!item.inStock()) order.setText("Out-of-stock");
-	}
-	
+
+
 	public void underStock(Item item)
 	{
 		ArrayList<JComponent> arr = new ArrayList<JComponent>();
@@ -351,9 +357,7 @@ public class UIItem extends JPanel
 	    jd.add(uiPan);
 		jd.setLocationRelativeTo(this);		
 		jd.setVisible(true);
-	}
-
-	
+	}	
 	public void stockOut(Item item)
 	{
 		//order.setText("Out-of-stock");
@@ -370,6 +374,7 @@ public class UIItem extends JPanel
 	    jd.add(uiPan);
 		jd.setVisible(true);
 	}
+	*/
 	
 	
 }
