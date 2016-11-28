@@ -134,16 +134,16 @@ public class UIItem extends JPanel
 					UIItemHelper.itemSelected(_item);
 				}
 			});
-			JButton add2Cart = new JButton("Add2Cart");
-			add2Cart.addActionListener(new ActionListener() 
+			JButton delete = new JButton("delete");
+			delete.addActionListener(new ActionListener() 
 			{
 				public void actionPerformed(ActionEvent e)
 				{
-					UIItemHelper.add2Cart(_item);
+				    UIItemHelper.deleteItem(_item);
 				}
 			});
 			this.add(view);
-			this.add(add2Cart);
+			this.add(delete);
 		}
 		else {
 			this.add(new JLabel(item.getDescription()));
