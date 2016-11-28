@@ -111,6 +111,7 @@ public class UIItem extends JPanel
 	}
 	*/
 	
+	/*
 	public UIItem(Item item, boolean b, boolean c)
 	{
 		super();
@@ -178,7 +179,8 @@ public class UIItem extends JPanel
 		}
 	}
 	
-	
+	*/
+	/*
 	public void orderItem(Item item, int amountToOrder)
 	{
 		App.InvRepo.processOrder(item, amountToOrder);
@@ -186,6 +188,7 @@ public class UIItem extends JPanel
 		numModel.setValue(0);
 		if(!item.inStock()) order.setText("Out-of-stock");
 	}
+	*/
 	
 	
 	/*

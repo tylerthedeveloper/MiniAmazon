@@ -64,7 +64,7 @@ public class BuyerUIItem extends JPanel
 					public void actionPerformed(ActionEvent e)
 					{
 						JButton thisButton = (JButton)e.getSource();
-						UIItem thisUIItem = (UIItem)thisButton.getParent();
+						BuyerUIItem thisUIItem = (BuyerUIItem)thisButton.getParent();
 						int amountDesired = (int)spinner.getValue();
 						if(_item.getQuantity() >= amountDesired && _item.inStock()) {
 							UIItemHelper.orderItem(thisUIItem, _item, amountDesired);

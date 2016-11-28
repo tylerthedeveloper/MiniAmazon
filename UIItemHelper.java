@@ -30,18 +30,18 @@ public class UIItemHelper
     public static void editItem(Item item) {
 	ArrayList<JComponent> arr = new ArrayList<JComponent>() {{
 		add(new UIItem(true));
-		add(new UIItem(item,true));
+		add(new SellerUIItem(item,true));
 		}};
 		JDialog jd = new UIDialog(new UIJPanel(arr),true);     
     }
 	
 	
-	public static void orderItem(UIItem uitem, Item item, int amountToOrder)
+	public static void orderItem(BuyerUIItem buitem, Item item, int amountToOrder)
 	{
 		App.InvRepo.processOrder(item, amountToOrder);
-		uitem.quantity.setText(String.valueOf(item.getQuantity()));
-		uitem.numModel.setValue(0);
-		if(!item.inStock()) uitem.order.setText("Out-of-stock");
+		buitem.quantity.setText(String.valueOf(item.getQuantity()));
+		buitem.numModel.setValue(0);
+		if(!item.inStock()) buitem.order.setText("Out-of-stock");
 	}
 	
 	
