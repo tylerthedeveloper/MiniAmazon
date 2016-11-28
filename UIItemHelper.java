@@ -61,4 +61,12 @@ public class UIItemHelper
 	    }};
 	    JDialog sOdog = new UIDialog(new UIJPanel(arr), true);
 	}	
+	
+	public static void itemNotFound() {
+	    ArrayList<JComponent> arr = new ArrayList<JComponent>() {{
+			add(new JLabel("Sorry, but we could not find the item matching your input."));
+			add(new JLabel("Please try another search"));
+	    }};
+	    JDialog sOdog = new UIDialog(new UIJPanel(arr), true);	
+	}
 }

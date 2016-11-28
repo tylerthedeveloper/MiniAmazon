@@ -1,4 +1,7 @@
 //package src.InventoryRepo;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class InventoryRepoClass
@@ -36,7 +39,7 @@ public class InventoryRepoClass
 		this.MarketTransactionList.add(transaction);		
 	}
 	
-	public Item searchForItem(String searchType, String textSearch) 
+	public Item searchForItem(String searchType, String textSearch) //throws 	NullPointerException
 	{
 		Item _item = new Item();
 		
@@ -53,6 +56,7 @@ public class InventoryRepoClass
 				} 
 			}		
 		}
+			
 		return _item;
 	}
 }
