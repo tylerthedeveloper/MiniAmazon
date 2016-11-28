@@ -12,7 +12,7 @@ public class UIItemHelper
 			add(new UIItem(true));
 			add(new UIItem(item, true)); 
 		}};
-		JDialog jd = new UIDialog(new UIJPanel(arr));
+		JDialog jd = new UIDialog(new UIJPanel(arr), true);
 	}
 		
 	public static void add2Cart(Item item)
@@ -24,7 +24,7 @@ public class UIItemHelper
 	}
 	
 	
-	public void orderItem(UIItem uitem, Item item, int amountToOrder)
+	public static void orderItem(UIItem uitem, Item item, int amountToOrder)
 	{
 		App.InvRepo.processOrder(item, amountToOrder);
 		uitem.quantity.setText(String.valueOf(item.getQuantity()));
@@ -35,12 +35,19 @@ public class UIItemHelper
 	
 	public static void underStock(Item item)
 	{
+		final JDialog uSdog;
 		ArrayList<JComponent> arr = new ArrayList<JComponent>() {{
 			add(new JLabel("Understock for item named:  "));
 			add(new JLabel(item.getName() + ". "));
 			add(new JLabel("We are sorry, but we do not have that many in stock"));
 	    }};
-	    JDialog uSdog = new UIDialog(new UIJPanel(arr));
+	    uSdog = new UIDialog(new UIJPanel(arr), true);
+	}
+	
+	public static void closeDialog(ActionEvent e) {
+		JButton thisButton = (JButton)e.getSource();
+		UIJPanel thisPanel = (UIJPanel)thisButton.getParent();		
+		((JDialog)thisPanel.getTopLevelAncestor()).dispose();
 	}
 
 	
@@ -52,6 +59,6 @@ public class UIItemHelper
 			add(new JLabel("we are sorry, but that item is out of stock. "));
 			add(new JLabel("We will notify you when it returns "));
 	    }};
-	    JDialog sOdog = new UIDialog(new UIJPanel(arr));
+	    JDialog sOdog = new UIDialog(new UIJPanel(arr), true);
 	}	
 }

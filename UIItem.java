@@ -6,9 +6,6 @@ import java.util.ArrayList;
 
 public class UIItem extends JPanel
 {
-
-	
-	UIItemHelper uiItemHelper = new UIItemHelper();
 	
 	//item section headers
 	public UIItem(boolean b)
@@ -59,7 +56,7 @@ public class UIItem extends JPanel
 			{
 				public void actionPerformed(ActionEvent e)
 				{
-					uiItemHelper.itemSelected(_item);
+					UIItemHelper.itemSelected(_item);
 				}
 			});
 			JButton add2Cart = new JButton("Add2Cart");
@@ -67,7 +64,7 @@ public class UIItem extends JPanel
 			{
 				public void actionPerformed(ActionEvent e)
 				{
-					uiItemHelper.add2Cart(_item);
+					UIItemHelper.add2Cart(_item);
 				}
 			});
 			this.add(view);
@@ -84,18 +81,15 @@ public class UIItem extends JPanel
 			{		
 				public void actionPerformed(ActionEvent e)
 				{
-				//uiItemHelper.orderItem(((UIItem)e.getSource()).getTopLevelAncestor()
-				//JButton button = (JButton)e.getSource();
-				//JPanel parent = button.getParent();
-
-					System.out.print((JButton)e.getSource().getParent());
+					JButton thisButton = (JButton)e.getSource();
+					UIItem thisUIItem = (UIItem)thisButton.getParent();
 					int amountDesired = (int)spinner.getValue();
 					if(_item.getQuantity() >= amountDesired && _item.inStock()) {
-						orderItem(_item, amountDesired);
+						UIItemHelper.orderItem(thisUIItem, _item, amountDesired);
 					} else if(_item.inStock()) {
-						uiItemHelper.underStock(_item);
+						UIItemHelper.underStock(_item);
 					} else {
-						uiItemHelper.stockOut(_item);
+						UIItemHelper.stockOut(_item);
 					}
 				}
 			});
@@ -129,7 +123,7 @@ public class UIItem extends JPanel
 			{
 				public void actionPerformed(ActionEvent e)
 				{
-					uiItemHelper.itemSelected(_item);
+					UIItemHelper.itemSelected(_item);
 				}
 			});
 			JButton add2Cart = new JButton("Add2Cart");
@@ -137,7 +131,7 @@ public class UIItem extends JPanel
 			{
 				public void actionPerformed(ActionEvent e)
 				{
-					uiItemHelper.add2Cart(_item);
+					UIItemHelper.add2Cart(_item);
 				}
 			});
 			this.add(view);
@@ -158,11 +152,11 @@ public class UIItem extends JPanel
 					System.out.print(e.getSource());
 					int amountDesired = (int)spinner.getValue();
 					if(_item.getQuantity() >= amountDesired && _item.inStock()) {
-						orderItem(_item, amountDesired);
+					//	orderItem(_item, amountDesired);
 					} else if(_item.inStock()) {
-						uiItemHelper.underStock(_item);
+						UIItemHelper.underStock(_item);
 					} else {
-						uiItemHelper.stockOut(_item);
+						UIItemHelper.stockOut(_item);
 					}
 				}
 			});
