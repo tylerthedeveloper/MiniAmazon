@@ -79,7 +79,7 @@ public class BuyerPage extends UIPage
         JPanel jdPan = new JPanel(true);
         jdPan.add(itemSectionFull);
         for(Item item : ((Buyer)App.User).ShoppingCart.viewItems()) {
-        	jdPan.add(new UIItem(item, true));
+        	jdPan.add(new BuyerUIItem(item, true));
         }
 	    jd.add(jdPan);
 		jd.setVisible(true);
@@ -109,9 +109,9 @@ public class BuyerPage extends UIPage
 		  	{
 			  	String textSearch = searchBox.getText();
 		  		if(itemID.isSelected()) {
-			  		add(new UIItem(App.InvRepo.searchForItem("ID", textSearch), true)); 
+			  		add(new BuyerUIItem(App.InvRepo.searchForItem("ID", textSearch), true)); 
 			  	} else {  
-				  	add(new UIItem(App.InvRepo.searchForItem("Name", textSearch), true)); 
+				  	add(new BuyerUIItem(App.InvRepo.searchForItem("Name", textSearch), true)); 
 				}
 				
   		       	App.Window.revalidate();

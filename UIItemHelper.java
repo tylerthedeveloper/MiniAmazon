@@ -10,7 +10,7 @@ public class UIItemHelper
 	{
 		ArrayList<JComponent> arr = new ArrayList<JComponent>() {{
 			add(new UIItem(true));
-			add(new UIItem(item, true)); 
+			add(new BuyerUIItem(item, true)); 
 		}};
 		JDialog jd = new UIDialog(new UIJPanel(arr), true);
 	}

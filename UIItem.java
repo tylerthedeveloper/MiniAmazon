@@ -29,12 +29,13 @@ public class UIItem extends JPanel
 
 	}
 	
-	static SpinnerNumberModel numModel; 
+	/*
+	//item information
+		static SpinnerNumberModel numModel; 
 	static JButton order;
 	static JLabel quantity;
-	
-	//item information
-	public UIItem(Item item, boolean b)
+
+		public BuyerUIItem(Item item, boolean b)
 	{
 		super();
 		if(item.getItemID() == null) 
@@ -108,6 +109,7 @@ public class UIItem extends JPanel
 			}
 		}
 	}
+	*/
 	
 	public UIItem(Item item, boolean b, boolean c)
 	{
