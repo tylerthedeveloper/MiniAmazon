@@ -22,6 +22,18 @@ public class UIItemHelper
 			BuyerPage.updateCart();
 		}
 	}
+
+    public static void deleteItem(Item item) {
+	App.InvRepo.MarketItemList.remove(item);
+    }
+
+    public static void editItem(Item item) {
+	ArrayList<JComponent> arr = new ArrayList<JComponent>() {{
+		add(new UIItem(true));
+		add(new UIItem(item,true));
+		}};
+		JDialog jd = new UIDialog(new UIJPanel(arr),true);     
+    }
 	
 	
 	public static void orderItem(UIItem uitem, Item item, int amountToOrder)
