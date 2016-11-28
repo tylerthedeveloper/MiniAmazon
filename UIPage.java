@@ -35,7 +35,12 @@ abstract class UIPage extends JPanel
     	for(Object item : list) {
     		if((Item)item instanceof Item) {
 	    		Item _item = (Item)item;
-	        	tempJP.add(new UIItem(_item, false));
+			if (App.User.getRole() == User.Role.Buyer) {
+			    tempJP.add(new UIItem(_item, false));
+			}
+			else {
+			    tempJP.add(new SellerUIItem(_item,false));
+			}
 	        }
         }
         
