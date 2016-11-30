@@ -3,10 +3,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
-
 public class SellerUIItem extends JPanel
 {
-	
 	static JLabel quantity;
 	JDialog addDialog;
 	
@@ -24,7 +22,7 @@ public class SellerUIItem extends JPanel
 		this.add(new JLabel(item.getSellerID()));
 		this.add(quantity);
 			
-		JButton editItem = new JButton("Edit item");
+		
 		JButton delete = new JButton("delete");
 		delete.addActionListener(new ActionListener() 
 		{
@@ -37,10 +35,10 @@ public class SellerUIItem extends JPanel
 				App.Window.repaint();	
 			}
 		});
-					
-	    if(!b) {		
-		    
-			
+				
+		JButton editItem = new JButton("Edit item");
+		
+	    if(!b) {					
 			editItem.addActionListener(new ActionListener() 
 			{
 				public void actionPerformed(ActionEvent e)
@@ -67,7 +65,7 @@ public class SellerUIItem extends JPanel
 					itemPanel.add(itemInfo);
 					itemPanel.add(close);
 					addDialog.add(itemPanel);
-					addDialog.setLocationRelativeTo(App.Window);		
+					addDialog.setLocationRelativeTo(((JButton)e.getSource()));
 					addDialog.setSize(new Dimension(700, 600));
 					addDialog.setModal(true);
 					addDialog.setVisible(true);

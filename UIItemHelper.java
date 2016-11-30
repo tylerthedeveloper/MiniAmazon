@@ -17,7 +17,8 @@ public class UIItemHelper
 		
 	public static void add2Cart(Item item)
 	{
-		if(App.User instanceof Buyer) {
+		//if(App.User instanceof Buyer) {
+		if ( !((Buyer)App.User).ShoppingCart.contains(item)) {
 			((Buyer)App.User).addToCart(item);
 			BuyerPage.updateCart();
 		}

@@ -16,10 +16,11 @@ public class InventoryRepoClass
 		
 	public void processOrder(Item item, int amountOrdered)
 	{
-		//this.removeMarketItem(item);
 		item.updateQuantity(amountOrdered);
+		System.out.print(App.InvRepo.MarketTransactionList.size());
 		Transaction _trans = this.makeTransaction(item);
 		this.addTransaction(_trans);
+		System.out.print(App.InvRepo.MarketTransactionList.size());
 		((Buyer)App.User).makePurchase(item, _trans);	
 	}
 	/*

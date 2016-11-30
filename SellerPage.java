@@ -24,6 +24,7 @@ public class SellerPage extends UIPage
 		{		
 			public void actionPerformed(ActionEvent e)
 		  	{
+		  		
 				//addItem();
 				final JDialog addDialog = new JDialog();
 				final JPanel itemInfo = enterItemInfo();
@@ -37,6 +38,7 @@ public class SellerPage extends UIPage
 				});
 				itemInfo.add(close);
 				addDialog.add(itemInfo);
+				addDialog.setLocationRelativeTo(((JButton)e.getSource()).getParent());		
 				addDialog.setSize(new Dimension(500, 300));
 				addDialog.setModal(true);
 				addDialog.setVisible(true);
@@ -135,7 +137,6 @@ public class SellerPage extends UIPage
 				}
 				
 				App.InvRepo.MarketItemList.add(item);
-				
 				add(new SellerUIItem(item, false));
 				App.Window.validate();
 				App.Window.revalidate();

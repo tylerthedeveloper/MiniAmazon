@@ -26,6 +26,10 @@ public class ShoppingCart {
     public int getCount() {
 		return count;
     }
+    
+    public boolean contains(Item item) {
+		return cart.contains(item);
+    }
 
     public void update() {
 

@@ -30,7 +30,7 @@ public class Transaction
 		this.setDescription(item.getDescription());
 		this.setPrice(item.getPrice());
 		this.setQuantity(item.getQuantity());
-		this.setSale(item.getSale());
+		this.setOnSale(item.getOnSale());
 		this.setSellerID(item.getSellerID());
 	}
 	
@@ -94,11 +94,11 @@ public class Transaction
 		return _quantity;
 	}
 	
-	public void setSale(boolean onSale) {
+	public void setOnSale(boolean onSale) {
 		_onSale = onSale;
 	}
 	
-	public boolean getSale() {
+	public boolean getOnSale() {
 		return _onSale;
 	}
 	
