@@ -61,17 +61,23 @@ public class SellerPage extends UIPage
 
 	public JPanel enterItemInfo() 
 	{
-		//UIItem uiitem = new UIItem(true, true);	
-	    //UIDialog sOdog = new UIDialog(uiitem, true);
 	    
         JPanel addPan = new JPanel();
 		final JTextField itemID = new JTextField("ItemID");
 		final JTextField name = new JTextField("Name");
 		final JLabel category = new JLabel("Category");
-		final JTextField price = new JTextField("Price");
+		final JLabel priceLab = new JLabel("Price");
+		Integer value = new Integer(1);
+		Integer min = new Integer(1);
+		Integer max = new Integer(1000);
+		Integer step = new Integer(10);
+		SpinnerNumberModel numModel = new SpinnerNumberModel(value, min, max, step);
+		final JSpinner price = new JSpinner(numModel);		
 		final JTextField description = new JTextField("Description");
-		final JTextField sellerID = new JTextField("SellerID");
-		final JTextField quantity = new JTextField("Quantity");
+		//final JTextField sellerID = new JTextField("SellerID");
+		final JLabel quantity = new JLabel("Quantity");
+		SpinnerNumberModel numModel2 = new SpinnerNumberModel(value, min, max, step);
+		final JSpinner quantSpin = new JSpinner(numModel2);		
 		final ButtonGroup catGroup = new ButtonGroup();
 		final JRadioButton elecButton = new JRadioButton("Electronics");
 		elecButton.setSelected(true);
@@ -87,8 +93,8 @@ public class SellerPage extends UIPage
 		final JRadioButton no = new JRadioButton("No");
     	saleGroup.add(yes);
     	saleGroup.add(no);
-		JButton addItemButton = new JButton("Add Item");
-		addItemButton.addActionListener(new ActionListener() 
+		JButton save = new JButton("Save");
+		save.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e)
 		  	{
@@ -119,9 +125,9 @@ public class SellerPage extends UIPage
 			  	
 		  		Item item = new Item(itemID.getText(), name.getText(), 
 								  	cat, description.getText(), 	
-								  	Integer.parseInt(price.getText()), 							
-								  	Integer.parseInt(quantity.getText()), onSale,
-								  	sellerID.getText());
+								  	(Integer)price.getValue(), 							
+								  	(Integer)quantSpin.getValue(), onSale, 
+								  	App.User.getUserID());
 								  
 				if(App.User.getRole() == User.Role.Seller)
 				{
@@ -130,7 +136,7 @@ public class SellerPage extends UIPage
 				
 				App.InvRepo.MarketItemList.add(item);
 				
-				add(new SellerUIItem(item, true));
+				add(new SellerUIItem(item, false));
 				App.Window.validate();
 				App.Window.revalidate();
 				App.Window.repaint();
@@ -147,9 +153,9 @@ public class SellerPage extends UIPage
 		addPan.add(yes);
 		addPan.add(no);
 		addPan.add(description);
-		addPan.add(sellerID);
+		//addPan.add(sellerID);
 		addPan.add(quantity);
-		addPan.add(addItemButton);
+		addPan.add(save);
     	return addPan;
 	}
 }
