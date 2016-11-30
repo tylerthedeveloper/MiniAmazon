@@ -3,11 +3,23 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
-abstract class UIPage extends JPanel 
+abstract class UIPage extends JPanel //implements CustomActionListener
 {
 	JPanel jList;	
 	
 	public UIPage() {}
+	
+	public UIPage(String[] buttons) 
+	{
+		//System.out.print(s);
+		ActionListener aListener  = new CustomActionListener();
+		for(String text : buttons)
+		{
+			JButton jb = new JButton(text);
+			jb.addActionListener(aListener);
+			this.add(jb);		
+		}
+	}
 	
 	public void viewProfile()
 	{
@@ -35,12 +47,13 @@ abstract class UIPage extends JPanel
     	for(Object item : list) {
     		if((Item)item instanceof Item) {
 	    		Item _item = (Item)item;
+			
 			if (App.User.getRole() == User.Role.Buyer) {
 			    tempJP.add(new BuyerUIItem(_item, false));
 			}
 			else {
 			    tempJP.add(new SellerUIItem(_item,false));
-			}
+				}
 	        }
         }
         

@@ -13,7 +13,7 @@ public class BuyerPage extends UIPage
 	
     public BuyerPage()
     {
-		super();		
+		super();	
 		//setting frame specifics
         JButton productList = new JButton("View Products");
         jList = new JPanel();
