@@ -20,7 +20,7 @@ public class SellerUIItem extends JPanel
 		this.add(new JLabel(item.getName()));
 		this.add(new JLabel(item.getCategory().toString()));
 		this.add(new JLabel(Integer.toString(item.getPrice())));
-		this.add(new JLabel(String.valueOf(item.getSale())));
+		this.add(new JLabel(String.valueOf(item.getOnSale())));
 		Integer value = new Integer(item.getQuantity());
 		Integer min = new Integer(0);
 		Integer max = new Integer(item.getQuantity());

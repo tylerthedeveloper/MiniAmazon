@@ -58,7 +58,14 @@ public class UIItemHelper
 	
 	public static void closeDialog(ActionEvent e) {
 		JButton thisButton = (JButton)e.getSource();
-		UIJPanel thisPanel = (UIJPanel)thisButton.getParent();		
+		JComponent thisPanel;
+		if(thisButton.getParent() instanceof UIJPanel) {
+			thisPanel = (UIJPanel)thisButton.getParent();		
+		}
+		else { 
+			thisPanel = (UIItem)thisButton.getParent();		
+		}
+				
 		((JDialog)thisPanel.getTopLevelAncestor()).dispose();
 	}
 

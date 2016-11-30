@@ -28,6 +28,27 @@ public class UIItem extends JPanel
 		}
 
 	}
+
+	public UIItem(boolean b, boolean c)
+	{
+		super();
+		JTextField itemID = new JTextField("ItemID");
+		JTextField name = new JTextField("Name");
+		JTextField category = new JTextField("Category");
+		JTextField price = new JTextField("Price");
+		JTextField sale = new JTextField("Sale");
+		JTextField description = new JTextField("Description");
+		JTextField sellerID = new JTextField("SellerID");
+		JTextField quantity = new JTextField("Quantity");
+		this.add(itemID);
+		this.add(name);
+		this.add(category);
+		this.add(price);
+		this.add(sale);
+		this.add(description);
+		this.add(sellerID);
+		this.add(quantity);
+	}
 	
 	/*
 	//item information

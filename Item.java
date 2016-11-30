@@ -30,7 +30,7 @@ public class Item extends Object
 		this.setDescription(description);
 		this.setPrice(price);
 		this.setQuantity(quantity);
-		this.setSale(onSale);
+		this.setOnSale(onSale);
 		this.setSellerID(sellerID);
 	}
 	
@@ -95,11 +95,11 @@ public class Item extends Object
 		return (this.getQuantity() > 0);
 	}
 	
-	public void setSale(boolean onSale) {
+	public void setOnSale(boolean onSale) {
 		_onSale = onSale;
 	}
 	
-	public boolean getSale() {
+	public boolean getOnSale() {
 		return _onSale;
 	}
 	
@@ -110,4 +110,38 @@ public class Item extends Object
 	public String getSellerID() {
 		return _sellerID;
 	}
+	
+    public void editItem(Item item, String _itemID, String _name, Category _category, 
+    					String _description, int _price, int _quantity, boolean _onSale) {
+	
+		
+		if (_itemID != null) {	
+		    item.setItemID(_itemID);
+		}
+
+		if (_name != null) {
+		    item.setName(_name);
+		}
+
+		if (_category != null) {
+                    item.setCategory(_category);
+                }
+
+		if (_description != null) {
+                    item.setDescription(_description);
+                }
+
+		if (String.valueOf(_price) != null) {
+                    item.setPrice(_price);
+                }
+
+		if (String.valueOf(_quantity) != null) {
+                    item.setQuantity(_quantity);
+                }
+
+		if (String.valueOf(_onSale) != null) {
+                    item.setOnSale(_onSale);
+                }
+	    }
+
 }

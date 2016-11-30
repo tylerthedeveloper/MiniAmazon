@@ -130,7 +130,6 @@ public class StartupHelper extends JDialog implements IStartupHelper
 		logPan.add(buyerButton);
     	logPan.add(sellerButton);
     	logPan.add(adminButton);
-    	
         loginDialog.setSize(new Dimension(500, 300));
         loginDialog.setLocationRelativeTo(this);
         loginDialog.setModal(true);
