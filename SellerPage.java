@@ -2,6 +2,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.ImageIcon;
+import java.util.Scanner;
+import java.io.*;
+import java.util.ArrayList;
 
 public class SellerPage extends UIPage
 {	
@@ -43,7 +46,31 @@ public class SellerPage extends UIPage
 				addDialog.setModal(true);
 				addDialog.setVisible(true);
 			}
-		});        
+		});  
+		
+		JButton upload = new JButton("Upload Items");
+		upload.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					final JDialog uploadDialog = new JDialog();
+					final JPanel fileInfo = uploadFile();
+					JButton close = new JButton("Close");
+					close.addActionListener(new ActionListener()
+					{
+						public void actionPerformed(ActionEvent e)
+						{
+							uploadDialog.dispose();
+						}
+					});
+					fileInfo.add(close);
+					uploadDialog.add(fileInfo);
+					uploadDialog.setLocationRelativeTo(((JButton)e.getSource()).getParent());
+					uploadDialog.setSize(new Dimension(300, 300));
+					uploadDialog.setVisible(true);
+				}
+			});
+		      
 		ImageIcon person = new ImageIcon("person.png");
         JLabel personIcon = new JLabel("profile", person, JLabel.CENTER);
         personIcon.addMouseListener(new MouseAdapter()   
@@ -56,10 +83,83 @@ public class SellerPage extends UIPage
         UIItem itemSectionShort = new UIItem(false);
         this.add(productList);
         this.add(addItem);
+        this.add(upload);
         //this.add(viewCategories);
         this.add(personIcon);
         this.add(itemSectionShort);
     }
+
+
+	public JPanel uploadFile()
+	{
+		JPanel addPan = new JPanel();
+		final JTextField file = new JTextField("filename");
+		final JButton upload = new JButton("Upload");
+		upload.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				String filename = file.getText();
+				try 
+				{
+					Scanner scan = new Scanner(new File("/Users/Poof/Desktop/"+filename));
+					
+					while (scan.hasNextLine()) 
+					{
+						String line = scan.nextLine();
+						ArrayList<String> row = new ArrayList<String>();
+						String[] items = line.split(",");
+						for (String col : items) {
+							if (col != "") {
+								row.add(col);
+							}
+						}
+						
+						Item.Category category;
+						String cat = row.get(2);
+						if (cat == "Electronics") {
+							category = Item.Category.Electronics;
+						} else if (cat == "Software") {
+							category = Item.Category.Software;
+						} else {
+							category = Item.Category.Books;
+						}
+						
+						Boolean b;
+						if (row.get(6) == "TRUE") {
+							b = true;
+						} else {
+							b = false;
+						}
+						
+						Item item = 
+							new Item(row.get(0),row.get(1),category,row.get(3),
+							Integer.parseInt(row.get(4)),Integer.parseInt(row.get(5)),
+							b,App.User.getUserID());
+						
+						if (!((Seller)App.User).exists(item)) {
+						
+							App.InvRepo.MarketItemList.add(item);
+							((Seller)App.User).addItem(item);
+						
+							add(new SellerUIItem(item, false));
+							App.Window.validate();
+							App.Window.revalidate();
+							App.Window.repaint();
+						}
+					}
+				}
+				
+				catch (FileNotFoundException exc) 
+				{
+					exc.printStackTrace();
+				}
+			}
+		});
+		addPan.add(file);
+		addPan.add(upload);
+		return addPan;	
+	}
 
 	public JPanel enterItemInfo() 
 	{

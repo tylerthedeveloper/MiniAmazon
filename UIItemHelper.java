@@ -25,7 +25,8 @@ public class UIItemHelper
 	}
 
     public static void deleteItem(Item item) {
-	App.InvRepo.MarketItemList.remove(item);
+		App.InvRepo.MarketItemList.remove(item);
+		((Seller)App.User).deleteItem(item);
     }
 
     public static void editItem(Item item) {

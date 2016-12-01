@@ -51,6 +51,15 @@ public class Seller extends User //implements InventoryInterface
 			}
     	}
 	}
+	
+	public Boolean exists(Item item) {
+		for (int i = 0; i < _items.size(); i++) {
+			if (_items.get(i) .equals(item)) {
+				return true;
+			}
+		}
+		return false;
+	}
     
    
 }
