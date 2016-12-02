@@ -7,32 +7,32 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class SellerPage extends UIPage
-{	
+{
     public SellerPage()
     {
-		//super(new String[]{"View Products"});	
+		//super(new String[]{"View Products"});
 		super();
         jList = new JPanel();
         JButton productList = new JButton("View Products");
-		productList.addActionListener(new ActionListener() 
-		{		
+		productList.addActionListener(new ActionListener()
+		{
 			public void actionPerformed(ActionEvent e)
 		  	{
-				fillList(((Seller)App.User).seeMyInventory());		  	
+				fillList(((Seller)App.User).seeMyInventory());
 			}
-		});        
+		});
         //JButton searchProducts = new JButton("Search Products");
-        JButton addItem = new JButton("Add item");
-		addItem.addActionListener(new ActionListener() 
-		{		
+    JButton addItem = new JButton("Add item");
+		addItem.addActionListener(new ActionListener()
+		{
 			public void actionPerformed(ActionEvent e)
 		  	{
-		  		
+
 				//addItem();
 				final JDialog addDialog = new JDialog();
 				final JPanel itemInfo = enterItemInfo();
 				JButton close = new JButton("Close");
-				close.addActionListener(new ActionListener() 
+				close.addActionListener(new ActionListener()
 				{
 					public void actionPerformed(ActionEvent e)
 				  	{
@@ -41,13 +41,13 @@ public class SellerPage extends UIPage
 				});
 				itemInfo.add(close);
 				addDialog.add(itemInfo);
-				addDialog.setLocationRelativeTo(((JButton)e.getSource()).getParent());		
+				addDialog.setLocationRelativeTo(((JButton)e.getSource()).getParent());
 				addDialog.setSize(new Dimension(500, 300));
 				addDialog.setModal(true);
 				addDialog.setVisible(true);
 			}
-		});  
-		
+		});
+
 		JButton upload = new JButton("Upload Items");
 		upload.addActionListener(new ActionListener()
 			{
@@ -70,12 +70,12 @@ public class SellerPage extends UIPage
 					uploadDialog.setVisible(true);
 				}
 			});
-		      
+
 		ImageIcon person = new ImageIcon("person.png");
         JLabel personIcon = new JLabel("profile", person, JLabel.CENTER);
-        personIcon.addMouseListener(new MouseAdapter()   
-        {   
-			public void mouseClicked(MouseEvent e)  
+        personIcon.addMouseListener(new MouseAdapter()
+        {
+			public void mouseClicked(MouseEvent e)
 		  	{
 				viewProfile();
 		  	}
@@ -100,11 +100,11 @@ public class SellerPage extends UIPage
 			public void actionPerformed(ActionEvent e)
 			{
 				String filename = file.getText();
-				try 
+				try
 				{
-					Scanner scan = new Scanner(new File("/Users/Poof/Desktop/"+filename));
-					
-					while (scan.hasNextLine()) 
+					Scanner scan = new Scanner(new File(System.getProperty("user.dir")+"/"+filename));
+
+					while (scan.hasNextLine())
 					{
 						String line = scan.nextLine();
 						ArrayList<String> row = new ArrayList<String>();
@@ -114,7 +114,7 @@ public class SellerPage extends UIPage
 								row.add(col);
 							}
 						}
-						
+
 						Item.Category category;
 						String cat = row.get(2);
 						if (cat == "Electronics") {
@@ -124,26 +124,26 @@ public class SellerPage extends UIPage
 						} else {
 							category = Item.Category.Books;
 						}
-						
+
 						Boolean b;
 						if (row.get(6) == "TRUE") {
 							b = true;
 						} else {
 							b = false;
 						}
-						
-						Item item = 
+
+						Item item =
 							new Item(row.get(0),row.get(1),category,row.get(3),
 							Integer.parseInt(row.get(4)),Integer.parseInt(row.get(5)),
 							b,App.User.getUserID());
-						
+
 						Seller s = (Seller)App.User;
-						
+
 						if (!s.exists(item)) {
-						
+
 							App.InvRepo.MarketItemList.add(item);
 							((Seller)App.User).addItem(item);
-						
+
 							add(new SellerUIItem(item, false));
 							App.Window.validate();
 							App.Window.revalidate();
@@ -151,8 +151,8 @@ public class SellerPage extends UIPage
 						}
 					}
 				}
-				
-				catch (FileNotFoundException exc) 
+
+				catch (FileNotFoundException exc)
 				{
 					exc.printStackTrace();
 				}
@@ -160,13 +160,13 @@ public class SellerPage extends UIPage
 		});
 		addPan.add(file);
 		addPan.add(upload);
-		return addPan;	
+		return addPan;
 	}
 
-	public JPanel enterItemInfo() 
+	public JPanel enterItemInfo()
 	{
-	    
-        JPanel addPan = new JPanel();
+
+    JPanel addPan = new JPanel();
 		final JTextField itemID = new JTextField("ItemID");
 		final JTextField name = new JTextField("Name");
 		final JLabel category = new JLabel("Category");
@@ -176,68 +176,68 @@ public class SellerPage extends UIPage
 		Integer max = new Integer(1000);
 		Integer step = new Integer(10);
 		SpinnerNumberModel numModel = new SpinnerNumberModel(value, min, max, step);
-		final JSpinner price = new JSpinner(numModel);		
+		final JSpinner price = new JSpinner(numModel);
 		final JTextField description = new JTextField("Description");
 		//final JTextField sellerID = new JTextField("SellerID");
 		final JLabel quantity = new JLabel("Quantity");
 		SpinnerNumberModel numModel2 = new SpinnerNumberModel(value, min, max, step);
-		final JSpinner quantSpin = new JSpinner(numModel2);		
+		final JSpinner quantSpin = new JSpinner(numModel2);
 		final ButtonGroup catGroup = new ButtonGroup();
 		final JRadioButton elecButton = new JRadioButton("Electronics");
 		elecButton.setSelected(true);
 		final JRadioButton softButton = new JRadioButton("Software");
 		final JRadioButton bookButton = new JRadioButton("Books");
-    	catGroup.add(elecButton);
-    	catGroup.add(softButton);
-    	catGroup.add(bookButton);
-    	final JLabel sale = new JLabel("Sale?");
-    	final ButtonGroup saleGroup = new ButtonGroup();
+    catGroup.add(elecButton);
+    catGroup.add(softButton);
+    catGroup.add(bookButton);
+    final JLabel sale = new JLabel("Sale?");
+    final ButtonGroup saleGroup = new ButtonGroup();
 		final JRadioButton yes = new JRadioButton("Yes");
 		yes.setSelected(true);
 		final JRadioButton no = new JRadioButton("No");
-    	saleGroup.add(yes);
-    	saleGroup.add(no);
+    saleGroup.add(yes);
+    saleGroup.add(no);
 		JButton save = new JButton("Save");
-		save.addActionListener(new ActionListener() 
+		save.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 		  	{
 		  		Item.Category cat;
-		  		
+
 				if(elecButton.isSelected()) {
 			  		cat = Item.Category.Electronics;
 			  	}
-			  		
+
 			  	else if(softButton.isSelected()) {
 			  		cat = Item.Category.Software;
 			  	}
-			  		
+
 		  		else {
-			  		cat = Item.Category.Books;		  		
+			  		cat = Item.Category.Books;
 			  	}
-				
-				
+
+
 				boolean onSale;
-		  		
+
 				if(yes.isSelected()) {
 			  		onSale = true;
 			  	}
-			  		
+
 			  	else {
 			  		onSale = false;
 			  	}
-			  	
-		  		Item item = new Item(itemID.getText(), name.getText(), 
-								  	cat, description.getText(), 	
-								  	(Integer)price.getValue(), 							
-								  	(Integer)quantSpin.getValue(), onSale, 
+
+		  		Item item = new Item(itemID.getText(), name.getText(),
+								  	cat, description.getText(),
+								  	(Integer)price.getValue(),
+								  	(Integer)quantSpin.getValue(), onSale,
 								  	App.User.getUserID());
-								  
+
 				if(App.User.getRole() == User.Role.Seller)
 				{
 					((Seller)App.User).addItem(item);
 				}
-				
+
 				App.InvRepo.MarketItemList.add(item);
 				add(new SellerUIItem(item, false));
 				App.Window.validate();
