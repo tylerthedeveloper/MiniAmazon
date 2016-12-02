@@ -137,7 +137,9 @@ public class SellerPage extends UIPage
 							Integer.parseInt(row.get(4)),Integer.parseInt(row.get(5)),
 							b,App.User.getUserID());
 						
-						if (!((Seller)App.User).exists(item)) {
+						Seller s = (Seller)App.User;
+						
+						if (!s.exists(item)) {
 						
 							App.InvRepo.MarketItemList.add(item);
 							((Seller)App.User).addItem(item);
