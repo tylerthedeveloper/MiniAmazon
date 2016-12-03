@@ -13,8 +13,8 @@ public class App
 	public static User User;
 	public static JFrame Window;
 	public static Stack<UIPage> NavStack;
-		
-	
+
+
 	static boolean onStart = true;
 
 	public App()
@@ -22,13 +22,16 @@ public class App
 		//initialize App classes
 		InvRepo = new InventoryRepoClass();
 		InvRepo.MarketItemList.add(new Item("itemID", "name", Item.Category.Electronics, "description", 50, 50, true, "sellerID"));
-        InvRepo.MarketItemList.add(new Item("itemID2", "name2", Item.Category.Electronics, "description2", 50, 50, true, "sellerID2"));
+    InvRepo.MarketItemList.add(new Item("itemID2", "name2", Item.Category.Electronics, "description2", 50, 50, true, "sellerID2"));
 		UsrBase = new UserBaseClass();
+		UsrBase.addUser(new Seller("Jason","password","email@email.com",null));
+		UsrBase.addUser(new Buyer("Jason","password","jason@email.com",null));
+
 		NavStack = new Stack<UIPage>();
 		startUp();
 		Window = new Window();
 	}
-	
+
 	public void startUp() {
 		//check onstart
 		if(onStart) {
@@ -43,19 +46,19 @@ public class App
 	public void setMainPage()
 	{
 		if(User instanceof Buyer) {
-			
-		}	
-		
+
+		}
+
 		else if(User instanceof Seller) {
-			
-		}	
+
+		}
 
 		else {
-			
-		}	
-		
-	}	
+
+		}
+
+	}
 	*/
 
-	
+
 }

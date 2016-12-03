@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 abstract class UIPage extends JPanel //implements CustomActionListener
 {
-	JPanel jList;	
-	
+	JPanel jList;
+
 	public UIPage() {}
-	
-	public UIPage(String[] buttons) 
+
+	public UIPage(String[] buttons)
 	{
 		//System.out.print(s);
 		ActionListener aListener  = new CustomActionListener();
@@ -17,20 +17,20 @@ abstract class UIPage extends JPanel //implements CustomActionListener
 		{
 			JButton jb = new JButton(text);
 			jb.addActionListener(aListener);
-			this.add(jb);		
+			this.add(jb);
 		}
 	}
-	
+
 	public void viewProfile()
 	{
 		JPanel jdPan = new JPanel(true);
-	    JLabel userID = new JLabel("UserID");
-	    JLabel name = new JLabel("Name");
-	    JLabel email = new JLabel("Email");
-	    JLabel role = new JLabel("Role");
+	    JLabel userID = new JLabel(App.User.getUserID());
+	    JLabel name = new JLabel(App.User.getName());
+	    JLabel email = new JLabel(App.User.getEmail());
+	    JLabel role = new JLabel(App.User.getRole().toString());
 	    jdPan.add(userID);
 	    jdPan.add(name);
-	    jdPan.add(email);	    
+	    jdPan.add(email);
 	    jdPan.add(role);
 	    jdPan.add(App.User.showProfile());
 	    JDialog jd = new JDialog();
@@ -40,14 +40,14 @@ abstract class UIPage extends JPanel //implements CustomActionListener
 		jd.setLocationRelativeTo(this);
 		jd.setVisible(true);
 	}
-	
-	public void fillList(ArrayList<?> list) 
+
+	public void fillList(ArrayList<?> list)
 	{
 		JPanel tempJP = new JPanel();
     	for(Object item : list) {
     		if((Item)item instanceof Item) {
 	    		Item _item = (Item)item;
-			
+
 			if (App.User.getRole() == User.Role.Buyer) {
 			    tempJP.add(new BuyerUIItem(_item, false));
 			}
@@ -56,12 +56,11 @@ abstract class UIPage extends JPanel //implements CustomActionListener
 				}
 	        }
         }
-        
+
 		this.remove(jList);
 	    jList = tempJP;
         this.add(tempJP);
         App.Window.revalidate();
         App.Window.repaint();
-    }    
+    }
 }
-

@@ -7,11 +7,11 @@ public class SellerUIItem extends JPanel
 {
 	static JLabel quantity;
 	JDialog addDialog;
-	
+
 	public SellerUIItem(Item item, boolean b)
 	{
 		super();
-	    final Item _item = item;
+	  final Item _item = item;
 		this.add(new JLabel(item.getItemID()));
 		this.add(new JLabel(item.getName()));
 		this.add(new JLabel(item.getCategory().toString()));
@@ -21,10 +21,10 @@ public class SellerUIItem extends JPanel
 		quantity = new JLabel(Integer.toString(item.getQuantity()));
 		this.add(new JLabel(item.getSellerID()));
 		this.add(quantity);
-			
-		
+
+
 		JButton delete = new JButton("delete");
-		delete.addActionListener(new ActionListener() 
+		delete.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
@@ -32,23 +32,23 @@ public class SellerUIItem extends JPanel
 				removeItem();
 				App.Window.validate();
 				App.Window.revalidate();
-				App.Window.repaint();	
+				App.Window.repaint();
 			}
 		});
-				
+
 		JButton editItem = new JButton("Edit item");
-		
-	    if(!b) {					
-			editItem.addActionListener(new ActionListener() 
+
+	    if(!b) {
+			editItem.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent e)
 			  	{
-			
+
 					addDialog = new JDialog();
 					final JPanel itemPanel = new JPanel();
 					JButton close = new JButton("Close");
 					SellerUIItem sellerItem = new SellerUIItem(_item, true);
-					close.addActionListener(new ActionListener() 
+					close.addActionListener(new ActionListener()
 					{
 						public void actionPerformed(ActionEvent e)
 						{
@@ -58,8 +58,8 @@ public class SellerUIItem extends JPanel
 							App.Window.repaint();
 						}
 					});
-								
-					
+
+
 					JPanel itemInfo = enterItemInfo(_item);
 					itemPanel.add(sellerItem);
 					itemPanel.add(itemInfo);
@@ -74,19 +74,19 @@ public class SellerUIItem extends JPanel
 					revalidate();
 					repaint();
 				}
-			});     
-			
+			});
+
 			this.add(editItem);
 			this.add(delete);
-			
+
 			}
 
-			
+
 	}
-	
-	public JPanel enterItemInfo(Item item) 
+
+	public JPanel enterItemInfo(Item item)
 	{
-		
+
 	    final Item _item = item;
         JPanel addPan = new JPanel();
 		final JTextField itemID = new JTextField("ItemID");
@@ -98,12 +98,12 @@ public class SellerUIItem extends JPanel
 		Integer max = new Integer(1000);
 		Integer step = new Integer(10);
 		SpinnerNumberModel numModel = new SpinnerNumberModel(value, min, max, step);
-		final JSpinner price = new JSpinner(numModel);		
+		final JSpinner price = new JSpinner(numModel);
 		final JTextField description = new JTextField("Description");
 		final JTextField sellerID = new JTextField("SellerID");
 		final JLabel quantity = new JLabel("Quantity");
 		SpinnerNumberModel numModel2 = new SpinnerNumberModel(value, min, max, step);
-		final JSpinner quantSpin = new JSpinner(numModel2);		
+		final JSpinner quantSpin = new JSpinner(numModel2);
 		final ButtonGroup catGroup = new ButtonGroup();
 		final JRadioButton elecButton = new JRadioButton("Electronics");
 		elecButton.setSelected(true);
@@ -120,40 +120,40 @@ public class SellerUIItem extends JPanel
     	saleGroup.add(yes);
     	saleGroup.add(no);
 		JButton save = new JButton("Save");
-		save.addActionListener(new ActionListener() 
+		save.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 		  	{
 		  		Item.Category cat;
-		  		
+
 				if(elecButton.isSelected()) {
 			  		cat = Item.Category.Electronics;
 			  	}
-			  		
+
 			  	else if(softButton.isSelected()) {
 			  		cat = Item.Category.Software;
 			  	}
-			  		
+
 		  		else {
-			  		cat = Item.Category.Books;		  		
+			  		cat = Item.Category.Books;
 			  	}
-				
-				
+
+
 				boolean onSale;
-		  		
+
 				if(yes.isSelected()) {
 			  		onSale = true;
 			  	}
-			  		
+
 			  	else {
 			  		onSale = false;
 			  	}
-			  	
-		  		_item.editItem(_item, itemID.getText(), name.getText(), 
-								  	cat, description.getText(), 	
-								  	(Integer)price.getValue(), 							
+
+		  		_item.editItem(_item, itemID.getText(), name.getText(),
+								  	cat, description.getText(),
+								  	(Integer)price.getValue(),
 								  	(Integer)quantSpin.getValue(), onSale);
-				
+
 				addItem(_item);
 				removeItem();
 				addDialog.dispose();
@@ -177,22 +177,22 @@ public class SellerUIItem extends JPanel
 		addPan.add(save);
     	return addPan;
 	}
-	
+
 	public void removeItem()
 	{
 		Container parent = getParent();
 		parent.remove(this);
 		parent.validate();
 		parent.revalidate();
-		parent.repaint();	
+		parent.repaint();
 	}
-	
+
 	public void addItem(Item item)
 	{
 		Container parent = getParent();
 		parent.add(new SellerUIItem(item, false));
 		parent.validate();
 		parent.revalidate();
-		parent.repaint();		
+		parent.repaint();
 	}
 }
