@@ -12,6 +12,7 @@ public class InventoryRepoClass
 	public InventoryRepoClass() {
 		MarketItemList = new ArrayList<Item>();
 		MarketTransactionList = new ArrayList<Transaction>();
+		//MarketTransactionList.add(new Transaction(MarketItemList.get(0)));
 	}
 		
 	public void processOrder(Item item, int amountOrdered)
@@ -40,7 +41,7 @@ public class InventoryRepoClass
 		this.MarketTransactionList.add(transaction);		
 	}
 	
-	public Item searchForItem(String searchType, String textSearch) //throws 	NullPointerException
+	public Item searchForItem(String searchType, String textSearch)
 	{
 		Item _item = new Item();
 		
@@ -60,4 +61,32 @@ public class InventoryRepoClass
 			
 		return _item;
 	}
+
+	public ArrayList<Item> catSearch(String category)
+	{
+		ArrayList<Item> _items = new ArrayList<Item>();
+		
+		if(category.equals("Electronics")) {			
+			for(Item item : this.MarketItemList) {
+				if(item.getCategory() == Item.Category.Electronics)
+					_items.add(item);
+			} 
+		}
+			
+		else if(category.equals("Software")) {
+			for(Item item : this.MarketItemList) {
+				if(item.getCategory() == Item.Category.Software)
+					_items.add(item);
+			} 
+		} 
+		else {
+			for(Item item : this.MarketItemList) {
+				if(item.getCategory() == Item.Category.Books)
+					_items.add(item);
+			} 
+		}
+			
+		return _items;
+	}
+
 }

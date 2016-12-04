@@ -14,6 +14,11 @@ public class BuyerPage extends UIPage
     public BuyerPage()
     {
 		super();	
+		pageSetup();
+	}
+	
+	public void pageSetup() 
+	{
 		//setting frame specifics
         JButton productList = new JButton("View Products");
         jList = new JPanel();
@@ -29,12 +34,17 @@ public class BuyerPage extends UIPage
 		{
 			public void actionPerformed(ActionEvent e)
 		  	{
-		  		searchWindow();
-		  		//String textSearch = searchBox.getText();
-		  		//System.out.print(textSearch);
+		  		itemSearch();
 		  	}
 		});
         JButton viewCategories = new JButton("View Categories");
+        viewCategories.addActionListener(new ActionListener() 
+        {
+			public void actionPerformed(ActionEvent e)
+		  	{
+		  		categorySearch();
+		  	}
+		});
         ImageIcon icon = new ImageIcon("cart.png");
         JLabel cartIcon = new JLabel("", icon, JLabel.CENTER);
         cartIcon.addMouseListener(new MouseAdapter()
@@ -57,10 +67,6 @@ public class BuyerPage extends UIPage
         shopCounter = new JLabel(String.valueOf(cartCount));
         UIItem itemSectionShort = new UIItem(false);
         this.add(productList);
-        //this.add(itemID);
-        //this.add(itemName);
-        //this.add(itemCategory);
-        //this.add(searchBox);
         this.add(searchProducts);
         this.add(viewCategories);
         this.add(cartIcon);
@@ -90,7 +96,7 @@ public class BuyerPage extends UIPage
 		shopCounter.setText(String.valueOf(((Buyer)App.User).ShoppingCart.getCount()));
 	}
 
-	public void searchWindow() 
+	public void itemSearch() 
 	{
 		final ButtonGroup searchGroup = new ButtonGroup();
 		final JRadioButton itemID = new JRadioButton("ItemID");
@@ -99,7 +105,6 @@ public class BuyerPage extends UIPage
 		itemID.setSelected(true);
 		searchGroup.add(itemID);
 		searchGroup.add(itemName);
-//		searchGroup.add(itemCategory);
         final JTextField searchBox = new JTextField("searchbar");
         final JButton searchButton = new JButton("Search");
         final JDialog jd = new JDialog();
@@ -123,7 +128,6 @@ public class BuyerPage extends UIPage
         JPanel jdPan = new JPanel(true);
         jdPan.add(itemID);
         jdPan.add(itemName);
-//        jdPan.add(itemCategory);
         jdPan.add(searchBox);
         jdPan.add(searchButton);
 	    jd.setSize(new Dimension(500, 300));
@@ -132,4 +136,54 @@ public class BuyerPage extends UIPage
 		jd.setLocationRelativeTo(this);
 		jd.setVisible(true);
 	}
+	
+	public void categorySearch() 
+	{
+		final ButtonGroup searchGroup = new ButtonGroup();
+		final JRadioButton eTron = new JRadioButton("Electronics");
+		final JRadioButton sWare = new JRadioButton("Software");
+		final JRadioButton books = new JRadioButton("Books");		
+		eTron.setSelected(true);
+		searchGroup.add(eTron);
+		searchGroup.add(sWare);
+		searchGroup.add(books);
+        final JButton searchButton = new JButton("Search");
+        final JDialog jd = new JDialog();
+		searchButton.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e)
+		  	{
+		  		ArrayList<Item> itemList; // = new ArrayList<Item>();
+		  		
+		  		if(eTron.isSelected()) {
+			  		itemList = App.InvRepo.catSearch("Electronics");
+			  	} else if(sWare.isSelected()) { 
+				  	itemList = App.InvRepo.catSearch("Software");
+				} else { 
+					itemList = App.InvRepo.catSearch("Books");
+				}
+				
+				for(Item item : itemList) { 
+					add(new BuyerUIItem(item, true));
+				}
+				
+				
+  		       	App.Window.revalidate();
+		       	App.Window.repaint();
+				jd.dispose();
+			}
+		});  
+        
+        JPanel jdPan = new JPanel(true);
+        jdPan.add(eTron);
+        jdPan.add(sWare);
+        jdPan.add(books);
+        jdPan.add(searchButton);
+	    jd.setSize(new Dimension(500, 300));
+        jd.setModal(true);
+	    jd.add(jdPan);
+		jd.setLocationRelativeTo(this);
+		jd.setVisible(true);	
+	}
+
 }

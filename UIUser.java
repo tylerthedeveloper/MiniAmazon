@@ -3,10 +3,10 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class UserUIItem extends JPanel
+public class UIUser extends JPanel
 {
 
-	public UserUIItem(User user)
+	public UIUser(User user)
 	{
 		super();
 	  final User _user = user;

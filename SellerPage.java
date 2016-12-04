@@ -12,6 +12,11 @@ public class SellerPage extends UIPage
     {
 		//super(new String[]{"View Products"});
 		super();
+		pageSetup();
+	}
+	
+	public void pageSetup() 
+	{
         jList = new JPanel();
         JButton productList = new JButton("View Products");
 		productList.addActionListener(new ActionListener()
